@@ -1,6 +1,6 @@
 <?php
 
-class Primers {
+class Reports {
     public $id;
     public $range;
 

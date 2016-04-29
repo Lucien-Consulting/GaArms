@@ -10,7 +10,6 @@ dist/
 ## exclude non-'.conf.js' js files in root
 *.js
 gulpfile.js
-*.css
 
 ## other stuff --- descriptive, I know :D
 .sass-cache

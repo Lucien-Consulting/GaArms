@@ -55,7 +55,7 @@ class Products {
         $this->setupDb();
         
         $sql = $this->db->prepare(" DELETE FROM products 
-                                    WHERE id_product = ?";);
+                                    WHERE id_product = ?");
         $sql->bindParam(1, $this->id);
         $sql->execute();
 

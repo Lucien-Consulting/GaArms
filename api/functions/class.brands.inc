@@ -53,7 +53,7 @@ class Brands {
         $this->setupDb();
         
         $sql = $this->db->prepare(" DELETE FROM brands 
-                                    WHERE id_brand = ?";);
+                                    WHERE id_brand = ?");
         $sql->bindParam(1, $this->id);
         $sql->execute();
 

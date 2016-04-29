@@ -9,7 +9,7 @@ class BrassService {
     }
 
     getBrass() {
-        return this._http.get('/api/brass.php?method=get')
+        return this._http.get('./api/brass.php?method=get')
             .map((response) => response);
     }
 
@@ -17,7 +17,7 @@ class BrassService {
         let data = '?method=update' + 
                     '&newValue=' + value
                     '&id=' + id;
-        return this._http.post('/api/bullets.php',
+        return this._http.post('./api/bullets.php',
             data
         ).map((response) => response);
     }

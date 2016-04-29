@@ -9,7 +9,7 @@ class PrimerService {
     }
 
     getBullets() {
-        return this._http.get('/api/primers.php?method=get')
+        return this._http.get('./api/primers.php?method=get')
             .map((response) => response);
     }
 
@@ -17,7 +17,7 @@ class PrimerService {
         let data = '?method=update' + 
                     '&newValue=' + value
                     '&id=' + id;
-        return this._http.post('/api/primers.php',
+        return this._http.post('./api/primers.php',
             data
         ).map((response) => response);
     }

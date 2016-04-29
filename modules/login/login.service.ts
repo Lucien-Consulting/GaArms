@@ -10,7 +10,7 @@ class LoginService {
 
     login(username:string, password:string) {
         let data = 'username=' + username +
-                    '&password= ' + password;
+                    '&password=' + password;
 
         return this._http.post('./api/login.php',
             data

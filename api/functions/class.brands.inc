@@ -16,11 +16,10 @@ class Brands {
     public function getBrands() {
         $this->setupDb();
         $sql = $this->db->prepare("SELECT name
-                            FROM brands");
+                                FROM brands");
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
         return json_encode($result);
-
     }
 
     //query the database to retrieve user information
@@ -34,7 +33,7 @@ class Brands {
         $sql->execute();
         $this->rows = $sql->rowCount();
         if ($this->rows > 0) {
-            $result = 'Brand already added.'
+            $result = 'Brand already added.';
         } else {
             $sql = $this->db->prepare(" INSERT INTO brands
                                         SET name = ?");

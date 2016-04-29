@@ -1,0 +1,19 @@
+## exclude dependencies
+node_modules/
+
+## exclude core js code that is transpiled
+modules/**/*.js
+modules/*.js
+dist/
+*.js.map
+
+## exclude non-'.conf.js' js files in root
+*.js
+gulpfile.js
+*.css
+
+## other stuff --- descriptive, I know :D
+.sass-cache
+.idea
+npm-debug.log
+.nyc_output

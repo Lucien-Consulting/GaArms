@@ -144,9 +144,9 @@ class Users {
             $sql->bindParam(2, $this->password);
             $sql->execute();
             if ($sql->rowCount() > 0):
-                $this->result = 'success';
+                $result = $sql->fetch(PDO::FETCH_ASSOC);
             else:
-                $this->result = 'error';
+                $result = 'error';
             endif;
         }catch(Exception $e){
             $this->result = 'error';

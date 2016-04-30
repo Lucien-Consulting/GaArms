@@ -18,7 +18,7 @@ class Bullets {
         //set up database
         $this->setupDb();
         
-        $results = $this->db->prepare(" SELECT  products.id_brand,
+        $results = $this->db->prepare(" SELECT  products.id_product,
                                                 products.quantity,
                                                 products.name as productName, 
                                                 brands.name as brandName
@@ -27,10 +27,10 @@ class Bullets {
                                         WHERE id_type = 1
                                         ORDER BY productName ASC");
         $results->execute();
-        $result = $results->fetch(PDO::FETCH_ASSOC);  
+        $result = $results->fetchAll(PDO::FETCH_ASSOC);  
 
         //return the array of information (should contain account information)
-        return json_encode($result);
+        $this->result = json_encode($result);
     }
 
     //add new user

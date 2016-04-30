@@ -27,10 +27,10 @@ class Powder {
                                         WHERE id_type = 4
                                         ORDER BY productName ASC");
         $results->execute();
-        $result = $results->fetch(PDO::FETCH_ASSOC);  
+        $result = $results->fetchAll(PDO::FETCH_ASSOC);  
 
         //return the array of information (should contain account information)
-        return json_encode($result);
+        $this->result = json_encode($result);
     }
 
     //add new user

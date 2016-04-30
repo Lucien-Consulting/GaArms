@@ -45,9 +45,9 @@ class Reports {
         $sql->bindParam(2, $prev);
         $sql->bindParam(3, $today);
         $results->execute();
-        $result = $results->fetch(PDO::FETCH_ASSOC);  
+        $result = $results->fetchAll(PDO::FETCH_ASSOC);  
 
-        return json_encode($result);
+        $this->result = json_encode($result);
     }
 
     public function __toString(){

@@ -21,8 +21,8 @@ class Products {
                             FROM products");
         $sql->bindParam(1, $this->name);
         $sql->execute();
-        $result = $sql->fetch(PDO::FETCH_ASSOC);
-        return json_encode($result);
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $this->result = json_encode($result);
     }
 
     public function addProduct(){

@@ -18,8 +18,8 @@ class Brands {
         $sql = $this->db->prepare("SELECT name
                                 FROM brands");
         $sql->execute();
-        $result = $sql->fetch(PDO::FETCH_ASSOC);
-        return json_encode($result);
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $this->result = json_encode($result);
     }
 
     //query the database to retrieve user information

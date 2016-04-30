@@ -30,7 +30,7 @@ class Primers {
         $result = $results->fetch(PDO::FETCH_ASSOC);  
 
         //return the array of information (should contain account information)
-        return json_encode($result);
+        $this->result = json_encode($result);
     }
 
     //add new user

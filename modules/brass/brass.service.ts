@@ -22,7 +22,7 @@ class BrassService {
             id: id
         };
         return this._http.post('./api/bullets.php',
-            data,
+            JSON.stringify(data),
             {headers: headers}
         ).map((response) => response);
     }

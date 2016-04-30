@@ -18,7 +18,7 @@ class LoginService {
         };
 
         return this._http.post('./api/login.php',
-            data,
+            JSON.stringify(data),
             {headers: headers}
         ).map((response) => response);
     }

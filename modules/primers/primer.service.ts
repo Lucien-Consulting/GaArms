@@ -23,7 +23,7 @@ class PrimerService {
             id: id
         };
         return this._http.post('./api/primers.php',
-            data,
+            JSON.stringify(data),
             {headers: headers}
         ).map((response) => response);
     }

@@ -18,7 +18,7 @@ class Brass {
         //set up database
         $this->setupDb();
         
-        $results = $this->db->prepare(" SELECT  products.id_brand,
+        $results = $this->db->prepare(" SELECT  products.id_product,
                                                 products.quantity,
                                                 products.name as productName, 
                                                 brands.name as brandName

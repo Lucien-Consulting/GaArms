@@ -16,7 +16,7 @@ class PrimerComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._primerService.getBullets()
+        this._primerService.getPrimers()
             .subscribe((response) => {
                 this.primers = response;
                 this.visiblePrimers = response;

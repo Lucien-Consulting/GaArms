@@ -10,7 +10,7 @@ class BrassService {
 
     getBrass() {
         return this._http.get('./api/brass.php?method=get')
-            .map((response) => response);
+            .map((response) => response.json());
     }
 
     updateBrass(value, id) {
@@ -24,7 +24,7 @@ class BrassService {
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response);
+        ).map((response) => response.json());
     }
 }
 

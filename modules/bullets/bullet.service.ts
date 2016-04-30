@@ -10,7 +10,7 @@ class BulletService {
 
     getBullets() {
         return this._http.get('./api/bullets.php?method=get')
-            .map((response) => response);
+            .map((response) => response.json());
     }
 
     updateBullet(value, id) {
@@ -25,7 +25,7 @@ class BulletService {
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response);
+        ).map((response) => response.json());
     }
 }
 

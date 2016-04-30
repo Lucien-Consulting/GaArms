@@ -8,12 +8,12 @@ class PrimerService {
     constructor(private _http:Http) {
     }
 
-    getBullets() {
+    getPrimers() {
         return this._http.get('./api/primers.php?method=get')
-            .map((response) => response);
+            .map((response) => response.json());
     }
 
-    updateBullet(value, id) {
+    updatePrimer(value, id) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
@@ -25,7 +25,7 @@ class PrimerService {
         return this._http.post('./api/primers.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response);
+        ).map((response) => response.json());
     }
 }
 

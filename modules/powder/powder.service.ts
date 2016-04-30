@@ -10,7 +10,7 @@ class PowderService {
 
     getPowder() {
         return this._http.get('./api/powder.php?method=get')
-            .map((response) => response);
+            .map((response) => response.json());
     }
 
     updatePowder(value, id) {
@@ -25,7 +25,7 @@ class PowderService {
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response);
+        ).map((response) => response.json());
     }
 }
 

@@ -143,30 +143,31 @@ class Users {
             $sql->bindParam(1, $this->username);
             $sql->bindParam(2, $this->password);
             $sql->execute();
-            $this->rows = $sql->rowCount();
-            $results = $sql->fetch(PDO::FETCH_ASSOC);
-            $this->user_id = $results['id_user'];
+            // $this->rows = $sql->rowCount();
+            $result = $sql->fetch(PDO::FETCH_ASSOC);
         }catch(Exception $e){
             $this->result = 'error';
             exit;
         }
 
+        $this->result = json_encode($result);
+
         //log the users log in into the login_log table
-        if($this->rows === 1):
-            try{
-                $sql = $this->db->prepare(" INSERT INTO login_log (kf_user, timelog)
-                                            VALUES      (?, ?)");
-                $sql->bindParam(1, $this->user_id);
-                $sql->bindParam(2, $this->timelog);
-                $sql->execute();
-            }catch(Exception $e){
-                $this->result = 'error';
-                exit;
-            }
-            $this->result = "success";
-        else:
-            $this->result = "failed";
-        endif;
+        // if($this->rows === 1):
+        //     try{
+        //         $sql = $this->db->prepare(" INSERT INTO login_log (kf_user, timelog)
+        //                                     VALUES      (?, ?)");
+        //         $sql->bindParam(1, $this->user_id);
+        //         $sql->bindParam(2, $this->timelog);
+        //         $sql->execute();
+        //     }catch(Exception $e){
+        //         $this->result = 'error';
+        //         exit;
+        //     }
+        //     $this->result = "success";
+        // else:
+        //     $this->result = "failed";
+        // endif;
     }
 
     public function __toString(){

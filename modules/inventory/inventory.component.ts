@@ -25,8 +25,12 @@ class InventoryComponent implements OnInit {
         this.active = category;
     }
 
+    checkLoggedIn() {
+        this.loggedIn = this._isCookieValid();
+    }
+
     _isCookieValid() {
-        return document.cookie.indexOf('gaArmsLoggedId') > -1;
+        return document.cookie.indexOf('loggedInGaArms') > -1;
     }
 }
 

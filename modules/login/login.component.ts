@@ -32,9 +32,8 @@ class LoginComponent implements OnInit {
     _setCookie() {
         let d = new Date();
         d.setTime(d.getTime() + (30*24*60*60*1000));
-        let expires = "expires="+ d.toUTCString();
-        document.cookie = "loggedInGaArms=true; " + expires;
-        console.log(document.cookie);
+        let expires = "expires="+ d.toUTCString() + ';';
+        document.cookie = "loggedinGaArms=true; " + expires + 'path=/;';
     }
 }
 

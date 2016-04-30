@@ -30,7 +30,7 @@ class InventoryComponent implements OnInit {
     }
 
     _isCookieValid() {
-        return document.cookie.indexOf('loggedInGaArms') > -1;
+        return document.cookie.indexOf('loggedinGaArms') > -1;
     }
 }
 

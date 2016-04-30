@@ -146,7 +146,7 @@ class Users {
             if ($sql->rowCount() > 0):
                 $result = $sql->fetch(PDO::FETCH_ASSOC);
             else:
-                $result = 'error';
+                $result = 'user not found';
             endif;
         }catch(Exception $e){
             $this->result = 'error';

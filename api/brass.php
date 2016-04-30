@@ -1,9 +1,9 @@
 <?php
 include('./functions/functions.inc');
-
+$json = json_decode(file_get_contents('php://input'));
 $brass = new Brass;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $method = $_POST['method'];
+    $method = $json['method'];
 } else {
     $method = $_GET['method'];
 }
@@ -15,8 +15,8 @@ switch ($method) {
         echo json_encode($brass->result);
         break;   
     case 'update':
-        $brass->id = $_POST['id'];
-        $brass->newValue = $_POST['value'];
+        $brass->id = $json['id'];
+        $brass->newValue = $json['value'];
         $brass->updateBrass();
         echo $brass->result;
         break;

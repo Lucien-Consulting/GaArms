@@ -32,16 +32,16 @@ class Brands {
         $sql->bindParam(1, $this->name);
         $sql->execute();
         $this->rows = $sql->rowCount();
-        if ($this->rows > 0) {
+        if ($this->rows > 0):
             $result = 'Brand already added.';
-        } else {
+        else:
             $sql = $this->db->prepare(" INSERT INTO brands
                                         SET name = ?");
 
             $sql->bindParam(1, $this->name);
             $sql->execute();
             $result = $sql->fetch(PDO::FETCH_ASSOC);  
-        }
+        endif;
 
         //return the array of information (should contain account information)
         return 'success';
@@ -50,13 +50,22 @@ class Brands {
     //add new user
     public function deleteBrand(){
         $this->setupDb();
-        
-        $sql = $this->db->prepare(" DELETE FROM brands 
+        $sqlGet = $this->db->prepare("SELECT *
+                                      FROM products
+                                      WHERE id_brand = ?");
+        $sqlGet->bindParam(1, $this->id);
+        $sqlGet->execute();
+        $rows = $sqlGet->rowCount();
+        if ($rows > 0):
+            $this->result = json_encode($sqlGet->fetchAll(PDO::FETCH_ASSOC));
+        else:
+            $sql = $this->db->prepare(" DELETE FROM brands 
                                     WHERE id_brand = ?");
-        $sql->bindParam(1, $this->id);
-        $sql->execute();
+            $sql->bindParam(1, $this->id);
+            $sql->execute();
 
-        return 'success';
+            $this->result = 'success';
+        endif;
     }
 
     public function __toString(){

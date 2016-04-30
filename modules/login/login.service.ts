@@ -1,5 +1,5 @@
 import { Injectable } from 'angular2/core';
-import { Http } from 'angular2/http';
+import { Headers, Http } from 'angular2/http';
 
 @Injectable()
 
@@ -9,11 +9,17 @@ class LoginService {
     }
 
     login(username:string, password:string) {
-        let data = 'username=' + username +
-                    '&password=' + password;
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        let data = {
+            username: username,
+            password: password
+        };
 
         return this._http.post('./api/login.php',
-            data
+            data,
+            {headers: headers}
         ).map((response) => response);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 class Users {
-    public $user_id;
+    public $username;
     public $name_first;
     public $name_last;
     public $password;

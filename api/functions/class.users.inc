@@ -143,8 +143,11 @@ class Users {
             $sql->bindParam(1, $this->username);
             $sql->bindParam(2, $this->password);
             $sql->execute();
-            $this->rows = $sql->rowCount();
-            $this->result = $sql->fetch(PDO::FETCH_ASSOC);
+            if ($sql->rowCount()):
+                $this->result = $sql->fetch(PDO::FETCH_ASSOC);
+            else:
+                $this->result = {'error': 'User not found'};
+            endif;
         }catch(Exception $e){
             $this->result = 'error';
             exit;

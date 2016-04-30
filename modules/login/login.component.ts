@@ -24,7 +24,7 @@ class LoginComponent implements OnInit {
             .subscribe((response) => {
                 if (response.id_user || response.id_user === 0) {
                     this._setCookie();
-                    this.loggedIn.next(true);
+                    this.loggedIn.next();
                 }
             });
     }

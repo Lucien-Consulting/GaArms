@@ -2,18 +2,9 @@
 include('./functions/functions.inc');
 
 $products = new Products;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $method = $_POST['method'];
-} else {
-    $method = $_GET['method'];
-}
+$method = $_POST['method'];
 
-switch ($method) {
-    case 'get':
-        $products->getProducts();
-        header('Content-Type: application/json');
-        echo $products->result;
-        break;   
+switch ($method) {  
     case 'delete':
         $products->id = $_POST['id'];
         $products->deleteProduct();

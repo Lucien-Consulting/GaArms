@@ -3,7 +3,7 @@ include('./functions/functions.inc');
 $json = json_decode(file_get_contents('php://input'));
 $brands = new Brands;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $method = $json['method'];
+    $method = $json->method;
 } else {
     $method = $_GET['method'];
 }
@@ -15,12 +15,12 @@ switch ($method) {
         echo $brands->result;
         break;   
     case 'delete':
-        $brands->id = $json['id'];
+        $brands->id = $json->id;
         $brands->deleteBrand();
         echo $brands->result;
         break;
     case 'create':
-        $brands->name = $json['name'];
+        $brands->name = $json->name;
         $brands->addBrand();
         echo $brands->result;
         break;

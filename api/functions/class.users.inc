@@ -143,8 +143,8 @@ class Users {
             $sql->bindParam(1, $this->username);
             $sql->bindParam(2, $this->password);
             $sql->execute();
-            // $this->rows = $sql->rowCount();
-            $result = $sql->fetch(PDO::FETCH_ASSOC);
+            $this->rows = $sql->rowCount();
+            $this->result = $sql->fetch(PDO::FETCH_ASSOC);
         }catch(Exception $e){
             $this->result = 'error';
             exit;

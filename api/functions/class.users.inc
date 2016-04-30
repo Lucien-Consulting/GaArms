@@ -143,8 +143,8 @@ class Users {
             $sql->bindParam(1, $this->username);
             $sql->bindParam(2, $this->password);
             $sql->execute();
-            if ($sql->rowCount()):
-                $this->result = json_encode($sql->fetch());
+            if ($sql->rowCount() > 0):
+                $this->result = 'success';
             else:
                 $this->result = 'error';
             endif;

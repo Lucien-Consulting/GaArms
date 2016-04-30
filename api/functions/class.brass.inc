@@ -30,7 +30,7 @@ class Brass {
         $result = $results->fetchAll(PDO::FETCH_ASSOC);  
 
         //return the array of information
-        return json_encode($result);
+        $this->result = json_encode($result);
     }
 
     //add new user

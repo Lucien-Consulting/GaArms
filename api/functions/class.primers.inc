@@ -27,7 +27,7 @@ class Primers {
                                         WHERE id_type = 2
                                         ORDER BY productName ASC");
         $results->execute();
-        $result = $results->fetch(PDO::FETCH_ASSOC);  
+        $result = $results->fetchAll(PDO::FETCH_ASSOC);  
 
         //return the array of information (should contain account information)
         $this->result = json_encode($result);

@@ -15,7 +15,7 @@ class Brands {
 
     public function getBrands() {
         $this->setupDb();
-        $sql = $this->db->prepare("SELECT name
+        $sql = $this->db->prepare("SELECT name, id_brand
                                 FROM brands");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);

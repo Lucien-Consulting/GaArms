@@ -17,7 +17,7 @@ class Products {
 
     public function getProducts() {
         $this->setupDb();
-        $this->db->prepare("SELECT name
+        $this->db->prepare("SELECT name, id_product
                             FROM products");
         $sql->bindParam(1, $this->name);
         $sql->execute();

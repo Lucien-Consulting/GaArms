@@ -14,10 +14,9 @@ switch ($method) {
         header('Content-Type: application/json');
         echo $products->result;
         break;   
-    case 'update':
+    case 'delete':
         $products->id = $_POST['id'];
-        $products->newValue = $_POST['value'];
-        $products->updateProduct();
+        $products->deleteProduct();
         echo $products->result;
         break;
     case 'create':

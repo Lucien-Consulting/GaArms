@@ -144,7 +144,7 @@ class Users {
             $sql->bindParam(2, $this->password);
             $sql->execute();
             if ($sql->rowCount()):
-                $this->result = json_encode($sql->fetch(PDO::FETCH_ASSOC));
+                $this->result = json_encode($sql->fetch());
             else:
                 $this->result = 'error';
             endif;

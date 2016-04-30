@@ -144,9 +144,9 @@ class Users {
             $sql->bindParam(2, $this->password);
             $sql->execute();
             if ($sql->rowCount()):
-                $this->result = $sql->fetch(PDO::FETCH_ASSOC);
+                $this->result = json_encode($sql->fetch(PDO::FETCH_ASSOC));
             else:
-                $this->result = {'error': 'User not found'};
+                $this->result = 'error';
             endif;
         }catch(Exception $e){
             $this->result = 'error';

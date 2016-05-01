@@ -35,9 +35,15 @@ class BulletComponent implements OnInit {
 
     filter() {
         let filter = this.brandFilter;
-        this.visibleBullets = this.bullets.filter((bullet) => {
+        let visible = this.bullets.filter((bullet) => {
             return bullet.brandName === filter || filter === '' || filter === 'All';
         });
+        if (visible.lenth) {
+            this.visibleBullets = visible;
+        }
+        else {
+            this.visibleBullets = this.bullets;
+        }
     }
 }
 

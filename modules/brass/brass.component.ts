@@ -30,15 +30,21 @@ class BrassComponent implements OnInit {
         let filter = changes.filter && changes.filter.currentValue;
         if (typeof filter !== 'undefined') {
             this.brandFilter = filter;
+            this.filter();
         }
-        this.filter();
     }
 
     filter() {
-        let filter = this.brandFilter;
-        this.visibleBrass = this.brass.filter((brass) => {
+        let filter = this.brandFilter; 
+        let visible = this.brass.filter((brass) => {
             return brass.brandName === filter || filter === '' || filter === 'All';
         });
+        if (visible.lenth) {
+            this.visibleBrass = visible;
+        }
+        else {
+            this.visibleBrass = this.brass;
+        }
     }
 }
 

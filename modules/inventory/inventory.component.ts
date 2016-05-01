@@ -17,6 +17,7 @@ import { BrandsService } from '../brands/brand.service';
 class InventoryComponent implements OnInit {
     loggedIn:boolean = false;
     active:string = 'bullets';
+    brandFilter:string = '';
     brands:Array;
 
     constructor(private _brandsService:BrandsService){

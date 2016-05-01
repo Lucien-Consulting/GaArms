@@ -22,7 +22,7 @@ class Products {
         $sql->bindParam(1, $this->name);
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-        $this->result = $result;
+        $this->result = json_encode($result);
     }
 
     public function addProduct(){

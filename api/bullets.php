@@ -12,7 +12,7 @@ switch ($method) {
     case 'get':
         $bullets->getBullets();
         header('Content-Type: application/json');
-        echo json_encode($bullets->result);
+        echo $bullets->result;
         break;   
     case 'update':
         $bullets->id = $json->id;

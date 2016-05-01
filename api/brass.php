@@ -12,7 +12,7 @@ switch ($method) {
     case 'get':
         $brass->getBrass();
         header('Content-Type: application/json');
-        echo json_encode($brass->result);
+        echo $brass->result;
         break;   
     case 'update':
         $brass->id = $json->id;

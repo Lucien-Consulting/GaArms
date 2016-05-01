@@ -47,6 +47,6 @@ class Reports {
         $results->execute();
         $result = $results->fetchAll(PDO::FETCH_ASSOC);  
 
-        $this->result = $result;
+        $this->result = json_encode($result);
     }
 }

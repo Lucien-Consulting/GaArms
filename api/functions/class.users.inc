@@ -36,7 +36,7 @@ class Users {
         }
 
         //return the array of information (should contain account information)
-        $this->result = $result;
+        $this->result = json_encode($result);
     }
 
     //add new user
@@ -144,7 +144,7 @@ class Users {
             $sql->bindParam(2, $this->password);
             $sql->execute();
             if ($sql->rowCount() > 0):
-                $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+                $result = json_encode($sql->fetchAll(PDO::FETCH_ASSOC));
             else:
                 $result = 'user not found';
             endif;

@@ -18,7 +18,7 @@ class InventoryComponent implements OnInit {
     loggedIn:boolean = false;
     active:string = 'bullets';
     brandFilter:string = '';
-    brands:Array;
+    brands:Array<any>;
 
     constructor(private _brandsService:BrandsService){
     }

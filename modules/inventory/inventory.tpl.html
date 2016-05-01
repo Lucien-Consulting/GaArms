@@ -16,10 +16,10 @@
 
         <ul class="nav navbar-right navbar-top-links">
             <li>
-                <a (click)="setActive('products')"><i class="fa fa-home fa-fw"></i> Manage Products</a>
+                <a (click)="setActive('products')"><i class="fa fa-tags fa-fw"></i> Manage Products</a>
             </li>
             <li>
-                <a (click)="setActive('brands')"><i class="fa fa-home fa-fw"></i> Manage Brands</a>
+                <a (click)="setActive('brands')"><i class="fa fa-book fa-fw"></i> Manage Brands</a>
             </li>
         </ul>
         <!-- /.navbar-top-links -->
@@ -38,16 +38,16 @@
                     </li>
                     <li [attr.class]="active === 'bullets' ? 'active' : ''"
                         (click)="setActive('bullets')">
-                        <a href=""><i class="fa fa-crosshairs"></i> Bullets</a></li>
+                        <a href=""><i class="fa fa-crosshairs fa-fw"></i> Bullets</a></li>
                     <li [attr.class]="active === 'primers' ? 'active' : ''"
                         (click)="setActive('primers')">
-                        <a href=""><i class="fa fa-dot-circle-o"> Primers</a></li>
+                        <a href=""><i class="fa fa-dot-circle-o fa-fw"></i> Primers</a></li>
                     <li [attr.class]="active === 'brass' ? 'active' : ''"
                         (click)="setActive('brass')">
-                        <a href=""><i class="fa fa-pause"> Brass</a></li>
+                        <a href=""><i class="fa fa-pause fa-fw"></i> Brass</a></li>
                     <li [attr.class]="active === 'powder' ? 'active' : ''"
                         (click)="setActive('powder')">
-                        <a href=""><i class="fa fa-bomb"> Powder</a></li>
+                        <a href=""><i class="fa fa-bomb fa-fw"></i> Powder</a></li>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

@@ -29,8 +29,8 @@ class BulletComponent implements OnInit {
         let filter = changes.brandFilter && changes.brandFilter.currentValue;
         if (typeof filter !== 'undefined') {
             this.brandFilter = filter;
+            this.filter();
         }
-        this.filter();
     }
 
     filter() {

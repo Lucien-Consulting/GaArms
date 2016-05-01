@@ -56,10 +56,10 @@
     </nav>
 
     <div id="page-wrapper">
-        <bullets *ngIf="active === 'bullets'"></bullets>
-        <primers *ngIf="active === 'primers'"></primers>
-        <brass *ngIf="active === 'brass'"></brass>
-        <powder *ngIf="active === 'powder'"></powder>
+        <bullets *ngIf="active === 'bullets'" [brandFilter]="brandFilter"></bullets>
+        <primers *ngIf="active === 'primers'" [brandFilter]="brandFilter"></primers>
+        <brass *ngIf="active === 'brass'" [brandFilter]="brandFilter"></brass>
+        <powder *ngIf="active === 'powder'" [brandFilter]="brandFilter"></powder>
     </div>
 </div>
 <div class="login" *ngIf="!loggedIn">

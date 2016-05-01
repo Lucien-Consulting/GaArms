@@ -9,6 +9,7 @@
         <div class="panel panel-default">
             <!-- /.panel-heading -->
             <div class="panel-body">
+                <input type="search" class="form-control input-lg" placeholder="search...">
                 <div class="dataTable_wrapper">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
@@ -25,9 +26,9 @@
                                 <td>{{prod.productName}}</td>
                                 <td>{{prod.quantity}}</td>
                                 <td>
-                                    <a class="btn btn-success" (^click)="addModal(prod)"><i class="fa fa-plus"></i></a>
-                                    <a class="btn btn-danger" (^click)="removeModal(prod)"><i class="fa fa-minus"></i></a>
-                                    <a class="btn btn-info" (^click)="reportModal(prod)"><i class="fa fa-file-text-o"></i></a>
+                                    <a class="btn btn-success col-md-4 col-xs-12" (^click)="addModal(prod)"><i class="fa fa-plus"></i></a>
+                                    <a class="btn btn-danger col-md-4 col-xs-12" (^click)="removeModal(prod)"><i class="fa fa-minus"></i></a>
+                                    <a class="btn btn-info col-md-4 col-xs-12" (^click)="reportModal(prod)"><i class="fa fa-file-text-o"></i></a>
                                 </td>
                             </tr>
                         </tbody>

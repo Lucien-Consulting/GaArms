@@ -36,7 +36,7 @@ class InventoryComponent implements OnInit {
         this.loggedIn = this._isCookieValid();
     }
 
-    setBrandFilter(brand:string) {
+    setBrandFilter(event, brand:string) {
         this.brandFilter = brand;
     }
 

@@ -29,7 +29,7 @@
                 <ul class="nav" id="side-menu">
                     <li class="sidebar-search">
                         <div class="input-group custom-search-form">
-                            <select>
+                            <select (change)="setBrandFilter($event, brand.name)">
                                 <option [value]=""></option>
                                 <option *ngFor="let brand of brands" [value]="brand.name">{{brand.name}}</option>
                             </select>

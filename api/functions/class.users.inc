@@ -146,7 +146,7 @@ class Users {
             if ($sql->rowCount() > 0):
                 $result = json_encode($sql->fetch(PDO::FETCH_ASSOC));
             else:
-                $result = 'user not found';
+                $result = json_encode(array(error => 'user not found'));
             endif;
         }catch(Exception $e){
             $this->result = 'error';

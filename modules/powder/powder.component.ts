@@ -38,11 +38,11 @@ class PowderComponent implements OnInit {
         let visible = this.powder.filter((powder) => {
             return powder.brandName === filter || filter === '' || filter === 'All';
         });
-        if (visible.lenth) {
+        if (visible.length) {
             this.visiblePowder = visible;
         }
         else {
-            this.visiblePowder = this.powder;
+            this.visiblePowder = [];
         }
     }
 }

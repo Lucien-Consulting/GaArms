@@ -38,11 +38,11 @@ class BulletComponent implements OnInit {
         let visible = this.bullets.filter((bullet) => {
             return bullet.brandName === filter || filter === '' || filter === 'All';
         });
-        if (visible.lenth) {
+        if (visible.length) {
             this.visibleBullets = visible;
         }
         else {
-            this.visibleBullets = this.bullets;
+            this.visibleBullets = [];
         }
     }
 }

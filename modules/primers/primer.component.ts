@@ -38,11 +38,11 @@ class PrimerComponent implements OnInit {
         let visible = this.primers.filter((primer) => {
             return primer.brandName === filter || filter === '' || filter === 'All';
         });
-        if (visible.lenth) {
+        if (visible.length) {
             this.visiblePrimers = visible;
         }
         else {
-            this.visiblePrimers = this.primers;
+            this.visiblePrimers = [];
         }
     }
 }

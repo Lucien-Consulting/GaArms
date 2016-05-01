@@ -39,11 +39,11 @@ class BrassComponent implements OnInit {
         let visible = this.brass.filter((brass) => {
             return brass.brandName === filter || filter === '' || filter === 'All';
         });
-        if (visible.lenth) {
+        if (visible.length) {
             this.visibleBrass = visible;
         }
         else {
-            this.visibleBrass = this.brass;
+            this.visibleBrass = [];
         }
     }
 }

@@ -12,7 +12,7 @@ import { PowderService } from './powder.service';
 class PowderComponent implements OnInit {
     powder:Array<any>;
     visiblePowder:Array<any>;
-    brandFilter:string:
+    brandFilter:string;
     @Input() brandFilter;
 
     constructor(private _powderService:PowderService) {

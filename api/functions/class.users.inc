@@ -144,7 +144,7 @@ class Users {
             $sql->bindParam(2, $this->password);
             $sql->execute();
             if ($sql->rowCount() > 0):
-                $result = $sql->fetch(PDO::FETCH_ASSOC);
+                $result = $sql->fetchAll(PDO::FETCH_ASSOC);
             else:
                 $result = 'user not found';
             endif;

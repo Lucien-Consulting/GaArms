@@ -40,7 +40,7 @@ class Brands {
 
             $sql->bindParam(1, $this->name);
             $sql->execute();
-            $this->result = $sql->fetch(PDO::FETCH_ASSOC);  
+            $this->result = $sql->fetchAll(PDO::FETCH_ASSOC);  
         endif;
     }
 
@@ -54,7 +54,7 @@ class Brands {
         $sqlGet->execute();
         $rows = $sqlGet->rowCount();
         if ($rows > 0):
-            $this->result = json_encode($sqlGet->fetchAll(PDO::FETCH_ASSOC));
+            $this->result = $sqlGet->fetchAll(PDO::FETCH_ASSOC);
         else:
             $sql = $this->db->prepare(" DELETE FROM brands 
                                     WHERE id_brand = ?");

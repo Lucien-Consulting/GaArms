@@ -1,5 +1,5 @@
 // this is the overarching builder component
-import { Component, OnInit, Input, OnChanges, SimpleChange } from 'angular2/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange, OnInit } from 'angular2/core';
 import { PrimerService } from './primer.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PrimerService } from './primer.service';
     templateUrl: '/modules/primers/primer.tpl.html'
 })
 
-class PrimerComponent implements OnInit {
+class PrimerComponent implements OnChanges, OnInit {
     primers:Array<any>;
     visiblePrimers:Array<any>;
     @Input() brandFilter;

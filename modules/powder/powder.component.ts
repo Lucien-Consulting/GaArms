@@ -9,7 +9,7 @@ import { PowderService } from './powder.service';
     templateUrl: '/modules/powder/powder.tpl.html'
 })
 
-class PowderComponent implements OnInit {
+class PowderComponent implements OnInit, OnChanges {
     powder:Array<any>;
     visiblePowder:Array<any>;
     @Input() brandFilter;

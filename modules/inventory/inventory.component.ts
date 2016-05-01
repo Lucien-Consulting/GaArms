@@ -6,7 +6,7 @@ import { BulletComponent } from '../bullets/bullet.component';
 import { PrimerComponent } from '../primers/primer.component';
 import { PowderComponent } from '../powder/powder.component';
 import { BrassComponent } from '../brass/brass.component';
-import { BrandsService } from '../brands/brand.service';
+import { InventoryService } from './inventory.service';
 
 @Component({
     directives: [ LoginComponent, BulletComponent, PrimerComponent, PowderComponent, BrassComponent ],
@@ -21,7 +21,7 @@ class InventoryComponent implements OnInit {
     brandFilter:string;
     brands:Array<any>;
 
-    constructor(private _brandsService:BrandsService){
+    constructor(private _brandsService:BrandsService, private _inventoryService:InventoryService){
     }
 
     ngOnInit() {

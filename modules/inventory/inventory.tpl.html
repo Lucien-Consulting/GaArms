@@ -49,10 +49,10 @@
     </nav>
 
     <div id="page-wrapper">
-        <bullets [attr.class]="active === 'bullets' ? 'show' : 'hide'" [brandFilter]="brandFilter"></bullets>
-        <primers [attr.class]="active === 'primers' ? 'show' : 'hide'" [brandFilter]="brandFilter"></primers>
-        <brass [attr.class]="active === 'brass' ? 'show' : 'hide'" [brandFilter]="brandFilter"></brass>
-        <powder [attr.class]="active === 'powder' ? 'show' : 'hide'" [brandFilter]="brandFilter"></powder>
+        <bullets *ngIf="active === 'bullets'" [brandFilter]="brandFilter"></bullets>
+        <primers *ngIf="active === 'primers'" [brandFilter]="brandFilter"></primers>
+        <brass *ngIf="active === 'brass'" [brandFilter]="brandFilter"></brass>
+        <powder *ngIf="active === 'powder'" [brandFilter]="brandFilter"></powder>
     </div>
 </div>
 <div class="login" *ngIf="!loggedIn">

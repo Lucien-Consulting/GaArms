@@ -10,7 +10,7 @@ import { BulletService } from './bullet.service';
     templateUrl: '/modules/bullets/bullet.tpl.html'
 })
 
-class BulletComponent implements OnInit {
+class BulletComponent implements OnInit, OnChanges {
     bullets:Array<any>;
     visibleBullets:Array<any>;
     searchTerm:string;

@@ -9,7 +9,7 @@ import { BrassService } from './brass.service';
     templateUrl: '/modules/brass/brass.tpl.html'
 })
 
-class BrassComponent implements OnInit {
+class BrassComponent implements OnInit, OnChanges {
     brass:Array<any>;
     visibleBrass:Array<any>;
     

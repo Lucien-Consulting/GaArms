@@ -1,5 +1,5 @@
 // this is the overarching builder component
-import { Component, OnInit, Output, EventEmitter } from 'angular2/core';
+import { Component, Output, EventEmitter } from 'angular2/core';
 import { NgForm } from 'angular2/common';
 import { LoginService } from '../login/login.service';
 
@@ -10,7 +10,7 @@ import { LoginService } from '../login/login.service';
     templateUrl: '/modules/login/login.tpl.html'
 })
 
-class LoginComponent implements OnInit {
+class LoginComponent {
     username:string = '';
     password:string = '';
     error:any = null;
@@ -26,7 +26,7 @@ class LoginComponent implements OnInit {
                 if (response.id_user || response.id_user === 0) {
                     this.error = null;
                     this._setCookie();
-                    this.checkLoggedInEvent.next();
+                    this.checkLoggedInEvent.next(true);
                 } else {
                     this.error = {
                         type: 'warning',

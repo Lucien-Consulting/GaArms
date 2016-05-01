@@ -1,5 +1,6 @@
 // this is the overarching builder component
 import { Component, OnInit } from 'angular2/core';
+import { NgForm } from 'angular2/common';
 import { LoginComponent } from '../login/login.component';
 import { BulletComponent } from '../bullets/bullet.component';
 import { PrimerComponent } from '../primers/primer.component';
@@ -17,7 +18,7 @@ import { BrandsService } from '../brands/brand.service';
 class InventoryComponent implements OnInit {
     loggedIn:boolean = false;
     active:string = 'bullets';
-    brandFilter:string = '';
+    brandFilter:string;
     brands:Array<any>;
 
     constructor(private _brandsService:BrandsService){
@@ -34,10 +35,6 @@ class InventoryComponent implements OnInit {
 
     checkLoggedIn() {
         this.loggedIn = this._isCookieValid();
-    }
-
-    setBrandFilter(event, brand:string) {
-        this.brandFilter = brand;
     }
 
     _isCookieValid() {

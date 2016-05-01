@@ -10,6 +10,9 @@ import { PrimerService } from './primer.service';
 })
 
 class PrimerComponent implements OnInit {
+    primers:Array<any>;
+    visiblePrimers:Array<any>;
+    brandFilter:string;
     @Input() brandFilter;
 
     constructor(private _primerService:PrimerService) {
@@ -23,7 +26,7 @@ class PrimerComponent implements OnInit {
             });
     }
 
-    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+    ngOnChanges(changes: any) {
         let filter = changes.filter && changes.filter.currentValue;
         if (typeof filter !== 'undefined') {
             this.brandFilter = filter;

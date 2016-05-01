@@ -1,4 +1,20 @@
 <div class="background" *ngIf="!loggedIn"></div>
+<header class="row">
+    <ul class="nav nav-pills">
+        <li [attr.class]="active === 'bullets' ? 'active' : ''"
+            (click)="setActive('bullets')">
+            <a href="">Bullets</a></li>
+        <li [attr.class]="active === 'primers' ? 'active' : ''"
+            (click)="setActive('primers')">
+            <a href="">Primers</a></li>
+        <li [attr.class]="active === 'brass' ? 'active' : ''"
+            (click)="setActive('brass')">
+            <a href="">Brass</a></li>
+        <li [attr.class]="active === 'powder' ? 'active' : ''"
+            (click)="setActive('powder')">
+            <a href="">Powder</a></li>
+    </ul>
+</header>
 <header>
     <div class="page-header">
         <h1>Georgia Arms</h1>
@@ -8,22 +24,6 @@
     <login (checkLoggedInEvent)="checkLoggedIn()"></login>
 </div>
 <div class="container-fluid" *ngIf="loggedIn">
-    <header class="row">
-        <ul class="nav nav-pills">
-            <li [attr.class]="active === 'bullets' ? 'active' : ''"
-                (click)="setActive('bullets')">
-                <a href="">Bullets</a></li>
-            <li [attr.class]="active === 'primers' ? 'active' : ''"
-                (click)="setActive('primers')">
-                <a href="">Primers</a></li>
-            <li [attr.class]="active === 'brass' ? 'active' : ''"
-                (click)="setActive('brass')">
-                <a href="">Brass</a></li>
-            <li [attr.class]="active === 'powder' ? 'active' : ''"
-                (click)="setActive('powder')">
-                <a href="">Powder</a></li>
-        </ul>
-    </header>
     <div class="content">
         <bullets *ngIf="active === 'bullets'"></bullets>
         <primers *ngIf="active === 'primers'"></primers>

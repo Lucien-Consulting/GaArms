@@ -10,20 +10,24 @@ import { BrassService } from './brass.service';
 })
 
 class BrassComponent implements OnInit {
+    brass:Array<any>;
+    visibleBrass:Array<any>;
+    filter:string;
+    
     @Input() brandFilter;
 
     constructor(private _brassService:BrassService) {
     }
 
     ngOnInit() {
-        this._brassService.getBullets()
+        this._brassService.getBrass()
             .subscribe((response) => {
                 this.brass = response;
                 this.visibleBrass = response;
             });
     }
 
-    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+    ngOnChanges(changes: any) {
         let filter = changes.filter && changes.filter.currentValue;
         if (typeof filter !== 'undefined') {
             this.brandFilter = filter;

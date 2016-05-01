@@ -15,7 +15,7 @@ class LoginComponent implements OnInit {
     password:string = '';
     error:any = null;
 
-    @Output checkLoggedInEvent:EventEmitter<any> = new EventEmitter();
+    @Output() checkLoggedInEvent:EventEmitter<any> = new EventEmitter();
 
     constructor(private _loginService:LoginService = LoginService) {
     }

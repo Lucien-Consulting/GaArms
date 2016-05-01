@@ -10,6 +10,9 @@ import { PowderService } from './powder.service';
 })
 
 class PowderComponent implements OnInit {
+    powder:Array<any>;
+    visiblePowder:Array<any>;
+    brandFilter:string:
     @Input() brandFilter;
 
     constructor(private _powderService:PowderService) {
@@ -23,7 +26,7 @@ class PowderComponent implements OnInit {
             });
     }
 
-    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+    ngOnChanges(changes: any) {
         let filter = changes.filter && changes.filter.currentValue;
         if (typeof filter !== 'undefined') {
             this.brandFilter = filter;

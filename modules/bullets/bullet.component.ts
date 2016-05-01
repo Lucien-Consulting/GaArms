@@ -31,19 +31,11 @@ class BulletComponent implements OnInit {
         this.filter();
     }
 
-    setActive(category:string) {
-        this.active = category;
-    }
-
     filter() {
         let filter = this.brandFilter;
         this.visibleBullets = this.bullets.filter((bullet) => {
             return bullet.brandName === filter || filter === '' || filter === 'All';
         });
-    }
-
-    _isCookieValid() {
-        return document.cookie.indexOf('loggedInGaArms') > -1;
     }
 }
 

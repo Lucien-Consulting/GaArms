@@ -5,7 +5,7 @@
     </div>
 </header>
 <div class="login" *ngIf="!loggedIn">
-    <login (loggedIn)="checkLoggedIn()"></login>
+    <login (checkLoggedInEvent)="checkLoggedIn()"></login>
 </div>
 <div class="container-fluid" *ngIf="loggedIn">
     <header class="row">

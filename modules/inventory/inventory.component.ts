@@ -18,7 +18,7 @@ class InventoryComponent implements OnInit {
     active:string = 'bullets';
 
     ngOnInit() {
-        this.loggedIn = this._isCookieValid();
+        this.checkLoggedIn();
     }
 
     setActive(category:string) {

@@ -27,23 +27,15 @@ class PowderComponent implements OnInit {
         let filter = changes.filter && changes.filter.currentValue;
         if (typeof filter !== 'undefined') {
             this.brandFilter = filter;
+            this.filter();
         }
-        this.filter();
-    }
-
-    setActive(category:string) {
-        this.active = category;
     }
 
     filter() {
         let filter = this.brandFilter;
-        this.visibleBullets = this.bullets.filter((bullet) => {
-            return bullet.brandName === filter || filter === '' || filter === 'All';
+        this.visiblePowder = this.powder.filter((powder) => {
+            return powder.brandName === filter || filter === '' || filter === 'All';
         });
-    }
-
-    _isCookieValid() {
-        return document.cookie.indexOf('loggedInGaArms') > -1;
     }
 }
 

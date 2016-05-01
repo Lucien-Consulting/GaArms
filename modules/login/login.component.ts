@@ -15,7 +15,7 @@ class LoginComponent implements OnInit {
     password:string = '';
     error:any = null;
 
-    @Output loggedIn:EventEmitter<any> = new EventEmitter();
+    @Output checkLoggedInEvent:EventEmitter<any> = new EventEmitter();
 
     constructor(private _loginService:LoginService = LoginService) {
     }
@@ -26,7 +26,7 @@ class LoginComponent implements OnInit {
                 if (response.id_user || response.id_user === 0) {
                     this.error = null;
                     this._setCookie();
-                    this.loggedIn.next();
+                    this.checkLoggedInEvent.next();
                 } else {
                     this.error = {
                         type: 'warning',

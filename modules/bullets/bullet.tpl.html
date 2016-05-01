@@ -17,7 +17,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let prod of products; let i=index" class="{{i%2 ? 'odd' : 'even'}}">
+                            <tr *ngFor="let prod of visibleBullets; let i=index" class="{{i%2 ? 'odd' : 'even'}}">
                                 <td>{{prod.brandName}}</td>
                                 <td>{{prod.productName}}</td>
                                 <td>{{prod.quantity}}</td>

@@ -12,7 +12,6 @@ import { PrimerService } from './primer.service';
 class PrimerComponent implements OnInit {
     primers:Array<any>;
     visiblePrimers:Array<any>;
-    brandFilter:string;
     @Input() brandFilter;
 
     constructor(private _primerService:PrimerService) {

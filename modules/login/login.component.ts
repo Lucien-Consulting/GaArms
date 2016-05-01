@@ -17,7 +17,7 @@ class LoginComponent implements OnInit {
 
     @Output() checkLoggedInEvent:EventEmitter<any> = new EventEmitter();
 
-    constructor(private _loginService:LoginService = LoginService) {
+    constructor(private _loginService:LoginService) {
     }
 
     login() {

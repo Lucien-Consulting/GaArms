@@ -12,7 +12,6 @@ import { BulletService } from './bullet.service';
 class BulletComponent implements OnInit {
     bullets:Array<any>;
     visibleBullets:Array<any>;
-    brandFilter:string;
     @Input() brandFilter;
 
     constructor(private _bulletService:BulletService) {

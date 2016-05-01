@@ -12,7 +12,6 @@ import { BrassService } from './brass.service';
 class BrassComponent implements OnInit {
     brass:Array<any>;
     visibleBrass:Array<any>;
-    filter:string;
     
     @Input() brandFilter;
 

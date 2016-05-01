@@ -22,7 +22,7 @@ class Products {
         $sql->bindParam(1, $this->name);
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-        $this->result = json_encode($result);
+        $this->result = $result;
     }
 
     public function addProduct(){
@@ -35,7 +35,7 @@ class Products {
         $sql->execute();
         $this->rows = $sql->rowCount();
         if ($this->rows > 0) {
-            return 'fail';
+            $this->result = 'fail';
         } else {
             $sql = $this->db->prepare(" INSERT INTO products
                                         SET name = ?
@@ -46,9 +46,8 @@ class Products {
             $sql->bindParam(2, $this->brand);
             $sql->bindParam(3, $this->type);
             $sql->execute();
+            $this->result = 'success';
         }
-
-        return 'success';
     }
 
     public function deleteProduct(){
@@ -59,10 +58,6 @@ class Products {
         $sql->bindParam(1, $this->id);
         $sql->execute();
 
-        return 'success';
-    }
-
-    public function __toString(){
-        return $this->result;
+        $this->result = 'success';
     }
 }

@@ -19,7 +19,7 @@ class Brands {
                                 FROM brands");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-        $this->result = json_encode($result);
+        $this->result = $result;
     }
 
     //query the database to retrieve user information
@@ -33,18 +33,15 @@ class Brands {
         $sql->execute();
         $this->rows = $sql->rowCount();
         if ($this->rows > 0):
-            $result = 'Brand already added.';
+            $this->result = 'Brand already added.';
         else:
             $sql = $this->db->prepare(" INSERT INTO brands
                                         SET name = ?");
 
             $sql->bindParam(1, $this->name);
             $sql->execute();
-            $result = $sql->fetch(PDO::FETCH_ASSOC);  
+            $this->result = $sql->fetch(PDO::FETCH_ASSOC);  
         endif;
-
-        //return the array of information (should contain account information)
-        return 'success';
     }
 
     //add new user
@@ -66,9 +63,5 @@ class Brands {
 
             $this->result = 'success';
         endif;
-    }
-
-    public function __toString(){
-        return $this->result;
     }
 }

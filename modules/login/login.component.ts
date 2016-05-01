@@ -13,6 +13,7 @@ import { LoginService } from '../login/login.service';
 class LoginComponent implements OnInit {
     username:string = '';
     password:string = '';
+    error:any = null;
 
     @Output loggedIn:EventEmitter<any> = new EventEmitter();
 
@@ -23,8 +24,14 @@ class LoginComponent implements OnInit {
         this._loginService.login(this.username, this.password)
             .subscribe((response) => {
                 if (response.id_user || response.id_user === 0) {
+                    this.error = null;
                     this._setCookie();
                     this.loggedIn.next();
+                } else {
+                    this.error = {
+                        type: 'warning',
+                        message: 'Invalid username or password.'
+                    }
                 }
             });
     }

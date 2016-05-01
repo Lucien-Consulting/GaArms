@@ -47,10 +47,6 @@ class Reports {
         $results->execute();
         $result = $results->fetchAll(PDO::FETCH_ASSOC);  
 
-        $this->result = json_encode($result);
-    }
-
-    public function __toString(){
-        return $this->result;
+        $this->result = $result;
     }
 }

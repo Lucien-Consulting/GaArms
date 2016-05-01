@@ -36,7 +36,7 @@ class Users {
         }
 
         //return the array of information (should contain account information)
-        return $result;
+        $this->result = $result;
     }
 
     //add new user
@@ -153,7 +153,7 @@ class Users {
             exit;
         }
 
-        $this->result = json_encode($result);
+        $this->result = $result;
 
         //log the users log in into the login_log table
         // if($this->rows === 1):
@@ -171,9 +171,5 @@ class Users {
         // else:
         //     $this->result = "failed";
         // endif;
-    }
-
-    public function __toString(){
-        return $this->result;
     }
 }

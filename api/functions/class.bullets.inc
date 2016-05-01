@@ -30,7 +30,7 @@ class Bullets {
         $result = $results->fetchAll(PDO::FETCH_ASSOC);  
 
         //return the array of information (should contain account information)
-        $this->result = json_encode($result);
+        $this->result = $result;
     }
 
     //add new user
@@ -43,9 +43,5 @@ class Bullets {
         $sql->bindParam(1, $newValue);
         $sql->bindParam(2, $id);
         $sql->execute();
-    }
-
-    public function __toString(){
-        return $this->result;
     }
 }

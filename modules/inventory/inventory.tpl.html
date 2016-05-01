@@ -27,18 +27,27 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <select>
+                                <option [value]=""></option>
+                                <option *ngFor="let brand of brands" [value]="brand.name">{{brand.name}}</option>
+                            </select>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
                     <li [attr.class]="active === 'bullets' ? 'active' : ''"
                         (click)="setActive('bullets')">
-                        <a href=""><i class="fa fa-crosshairs"></i>Bullets</a></li>
+                        <a href=""><i class="fa fa-crosshairs"></i> Bullets</a></li>
                     <li [attr.class]="active === 'primers' ? 'active' : ''"
                         (click)="setActive('primers')">
-                        <a href=""><i class="fa fa-dot-circle-o">Primers</a></li>
+                        <a href=""><i class="fa fa-dot-circle-o"> Primers</a></li>
                     <li [attr.class]="active === 'brass' ? 'active' : ''"
                         (click)="setActive('brass')">
-                        <a href=""><i class="fa fa-pause">Brass</a></li>
+                        <a href=""><i class="fa fa-pause"> Brass</a></li>
                     <li [attr.class]="active === 'powder' ? 'active' : ''"
                         (click)="setActive('powder')">
-                        <a href=""><i class="fa fa-bomb">Powder</a></li>
+                        <a href=""><i class="fa fa-bomb"> Powder</a></li>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

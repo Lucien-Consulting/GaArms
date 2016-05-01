@@ -6,7 +6,6 @@ import { BulletComponent } from '../bullets/bullet.component';
 import { PrimerComponent } from '../primers/primer.component';
 import { PowderComponent } from '../powder/powder.component';
 import { BrassComponent } from '../brass/brass.component';
-import { InventoryService } from './inventory.service';
 
 @Component({
     directives: [ LoginComponent, BulletComponent, PrimerComponent, PowderComponent, BrassComponent ],

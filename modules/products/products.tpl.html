@@ -18,9 +18,15 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Brand</th>
-                                <th>Product</th>
-                                <th>In Stock ({{ currentProductType === 'Powder' ? 'Pounds' : 'Pieces - 1000'}})</th>
+                                <th (click)="sortProds('brandName')">Brand 
+                                    <i [attr.class]="'fa fa-chevron-' + (sortBy === 'asc' ? 'up' : 'down')" 
+                                        [hidden]="this.sortCat !== 'brandName'"></i></th>
+                                <th (click)="sortProds('productName')">Product 
+                                    <i [attr.class]="'fa fa-chevron-' + (sortBy === 'asc' ? 'up' : 'down')" 
+                                        [hidden]="this.sortCat !== 'productName'"></i></th>
+                                <th (click)="sortProds('quantity')">In Stock ({{ currentProductType === 'Powder' ? 'Pounds' : 'Pieces - 1000'}}) 
+                                    <i [attr.class]="'fa fa-chevron-' + (sortBy === 'asc' ? 'up' : 'down')" 
+                                        [hidden]="this.sortCat !== 'quantity'"></i></th>
                                 <th></th>
                             </tr>
                         </thead>

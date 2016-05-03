@@ -17,6 +17,7 @@ class ProductsComponent implements OnInit, OnChanges {
     powder:Array<any>;
     visibleProducts:Array<any>;
     searchTerm:string;
+    sortBy:string = 'asc';
     @Input() currentProductType:string; // bullets, primers, brass, powder
     @Input() brandFilter:string;
 
@@ -77,18 +78,34 @@ class ProductsComponent implements OnInit, OnChanges {
 
     search() {
         let filter = this.searchTerm.toLowerCase();
-        let products = this._getProductsByType();
-        let visible = products.filter((prod) => {
-            return prod.brandName.toLowerCase().indexOf(filter) > -1 ||
-                   prod.productName.toLowerCase().indexOf(filter) > -1 ||
-                   filter === '';
+        if (filter === '' && this.brandFilter !== '') {
+            this.filter();
+        } else {
+            let products = this._getProductsByType();
+            let visible = products.filter((prod) => {
+                return prod.brandName.toLowerCase().indexOf(filter) > -1 ||
+                       prod.productName.toLowerCase().indexOf(filter) > -1 ||
+                       filter === '';
+            });
+            if (visible.length) {
+                this.visibleProducts = visible;
+            }
+            else {
+                this.visibleProducts = [];
+            }
+        }
+    }
+
+    sortProds(category:string) {
+        this.sortCat = category;
+        this.visibleProducts.sort((a, b) => {
+            if (this.sortBy = 'asc') {
+                return a[category] - b[category];
+            } else {
+                return b[category] - a[category];
+            }
         });
-        if (visible.length) {
-            this.visibleProducts = visible;
-        }
-        else {
-            this.visibleProducts = [];
-        }
+        this.sortBy = this.sortBy === 'asc' ? 'dec' : 'asc';
     }
 
     _getProductsByType() {

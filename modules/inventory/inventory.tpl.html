@@ -30,16 +30,16 @@
                         <!-- /input-group -->
                     </li>
                     <li [attr.class]="active === 'bullets' ? 'active' : ''"
-                        (click)="setActive('bullets')">
+                        (click)="setActive('Bullets')">
                         <a href=""><i class="fa fa-crosshairs fa-fw"></i> Bullets</a></li>
                     <li [attr.class]="active === 'primers' ? 'active' : ''"
-                        (click)="setActive('primers')">
+                        (click)="setActive('Primers')">
                         <a href=""><i class="fa fa-dot-circle-o fa-fw"></i> Primers</a></li>
                     <li [attr.class]="active === 'brass' ? 'active' : ''"
-                        (click)="setActive('brass')">
+                        (click)="setActive('Brass')">
                         <a href=""><i class="fa fa-pause fa-fw"></i> Brass</a></li>
                     <li [attr.class]="active === 'powder' ? 'active' : ''"
-                        (click)="setActive('powder')">
+                        (click)="setActive('Powder')">
                         <a href=""><i class="fa fa-bomb fa-fw"></i> Powder</a></li>
                 </ul>
             </div>
@@ -49,10 +49,7 @@
     </nav>
 
     <div id="page-wrapper">
-        <bullets *ngIf="active === 'bullets'" [brandFilter]="brandFilter"></bullets>
-        <primers *ngIf="active === 'primers'" [brandFilter]="brandFilter"></primers>
-        <brass *ngIf="active === 'brass'" [brandFilter]="brandFilter"></brass>
-        <powder *ngIf="active === 'powder'" [brandFilter]="brandFilter"></powder>
+        <products [brandFilter]="brandFilter" [currentProductType]="active"></products>
     </div>
 </div>
 <div class="login" *ngIf="!loggedIn">

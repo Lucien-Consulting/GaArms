@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Bullets</h1>
+        <h1 class="page-header">{{currentProductType}}</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -20,12 +20,12 @@
                             <tr>
                                 <th>Brand</th>
                                 <th>Product</th>
-                                <th>In Stock (Pieces - 1000)</th>
+                                <th>In Stock ({{ currentProductType === 'Powder' ? 'Pounds' : 'Pieces - 1000'}})</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let prod of visiblePowder; let i=index" class="{{i%2 ? 'odd' : 'even'}}">
+                            <tr *ngFor="let prod of visibleProducts; let i=index" class="{{i%2 ? 'odd' : 'even'}}">
                                 <td>{{prod.brandName}}</td>
                                 <td>{{prod.productName}}</td>
                                 <td>{{prod.quantity}}</td>

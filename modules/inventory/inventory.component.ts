@@ -2,14 +2,11 @@
 import { Component, OnInit } from 'angular2/core';
 import { NgForm } from 'angular2/common';
 import { LoginComponent } from '../login/login.component';
-import { BulletComponent } from '../bullets/bullet.component';
-import { PrimerComponent } from '../primers/primer.component';
-import { PowderComponent } from '../powder/powder.component';
-import { BrassComponent } from '../brass/brass.component';
+import { ProductsComponent } from '../products/products.component';
 import { BrandsService } from '../brands/brand.service';
 
 @Component({
-    directives: [ LoginComponent, BulletComponent, PrimerComponent, PowderComponent, BrassComponent ],
+    directives: [ LoginComponent, ProductsComponent ],
     providers: [ BrandsService ],
     selector: 'inventory',
     templateUrl: '/modules/inventory/inventory.tpl.html'

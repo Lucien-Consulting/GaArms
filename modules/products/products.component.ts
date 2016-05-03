@@ -100,9 +100,25 @@ class ProductsComponent implements OnInit, OnChanges {
         this.sortCat = category;
         this.visibleProducts.sort((a, b) => {
             if (this.sortBy = 'asc') {
-                return a[category] - b[category];
+                if (a[category] < b[category]) {
+                    return -1;
+                }
+                else if (a[category] > b[category]) {
+                    return 1;
+                }
+                else {
+                    return 0;
+                }
             } else {
-                return b[category] - a[category];
+                if (b[category] < a[category]) {
+                    return -1;
+                }
+                else if (b[category] > a[category]) {
+                    return 1;
+                }
+                else {
+                    return 0;
+                }
             }
         });
         this.sortBy = this.sortBy === 'asc' ? 'desc' : 'asc';

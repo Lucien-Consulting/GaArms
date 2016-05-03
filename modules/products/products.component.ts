@@ -101,32 +101,38 @@ class ProductsComponent implements OnInit, OnChanges {
         }
     }
 
-    sortProds(category:string) {
-        this.sortCat = category;
-        let sortBy = this._getInverseSortBy(category);
-        this.visibleProducts.sort((a, b) => {
-            if (sortBy = 'asc') {
-                if (a[category] < b[category]) {
-                    return -1;
-                }
-                else if (a[category] > b[category]) {
-                    return 1;
-                }
-                else {
-                    return 0;
-                }
-            } else {
-                if (b[category] < a[category]) {
-                    return -1;
-                }
-                else if (b[category] > a[category]) {
-                    return 1;
-                }
-                else {
-                    return 0;
-                }
-            }
-        });
+    showModal(type) {
+        this.modalType = type;
+    }
+
+    updateProduct() {
+        if (modalType === 'Add') {
+            this._productsService.updateProduct(
+                this.selectedProduct.id, 
+                parseInt(this.selectedProduct.quantity) + this.updateQuantity,
+                this.initial,
+                this.updateQuantity,
+                this.currentProductType
+            ).subscribe((response) => {
+                console.log(response);
+            });
+        } 
+        else if (modalType === 'Remove') {
+            this._productsService.updateProduct(
+                this.selectedProduct.id, 
+                parseInt(this.selectedProduct.quantity) - this.updateQuantity,
+                this.initial,
+                -this.updateQuantity,
+                this.currentProductType
+            ).subscribe((response) => {
+                console.log(response);
+            });
+        } else {
+
+        }
+        this.modalType = null;
+        this.updateQuantity = 0;
+        this.initial = '';
     }
 
     _getProductsByType() {
@@ -146,39 +152,6 @@ class ProductsComponent implements OnInit, OnChanges {
                 break;
         }
         return products;
-    }
-
-    _getInverseSortBy(category) {
-        let firstValue = this.visibleProducts[0][category];
-        let lastValue = this.visibleProducts[this.visibleProducts.length - 1][category];
-        if (firstValue > lastValue) {
-            return 'asc';
-        } else {
-            return 'desc';
-        }
-    }
-
-    updateProduct() {
-        if (modalType === 'Add') {
-            this._productsService.updateProduct(
-                this.selectedProduct.id, 
-                parseInt(this.selectedProduct.quantity) + this.updateQuantity,
-                this.currentProductType
-            ).subscribe((response) => {
-                console.log(response);
-            });
-        } 
-        else if (modalType === 'Remove') {
-            this._productsService.updateProduct(
-                this.selectedProduct.id, 
-                parseInt(this.selectedProduct.quantity) - this.updateQuantity,
-                this.currentProductType
-            ).subscribe((response) => {
-                console.log(response);
-            });
-        } else {
-
-        }
     }
 }
 

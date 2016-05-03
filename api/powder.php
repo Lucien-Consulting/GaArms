@@ -17,6 +17,8 @@ switch ($method) {
     case 'update':
         $powder->id = $json->id;
         $powder->newValue = $json->value;
+        $powder->quantity = $json->quantity;
+        $powder->initial = $json->initial;
         $powder->updatePowder();
         echo $powder->result;
         break;

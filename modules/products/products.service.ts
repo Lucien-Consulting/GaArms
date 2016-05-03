@@ -16,19 +16,19 @@ class ProductsService {
         
     }
 
-    updateProduct(id, value, type) {
+    updateProduct(id, value, initial, quantity, type) {
         switch (type) {
             case 'Bullets':
-                return this._updateBullet(id, value);
+                return this._updateBullet(id, value, initial, quantity);
                 break;
             case 'Primers':
-                return this._updatePrimer(id, value);
+                return this._updatePrimer(id, value, initial, quantity);
                 break;
             case 'Brass':
-                return this._updateBrass(id, value);
+                return this._updateBrass(id, value, initial, quantity);
                 break;
             case 'Powder':
-                return this._updatePowder(id, value);
+                return this._updatePowder(id, value, initial, quantity);
                 break;
         }
     }
@@ -38,14 +38,16 @@ class ProductsService {
             .map((response) => response.json());
     }
 
-    _updateBullet(id, value) {
+    _updateBullet(id, value, initial, quantity) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
         let data = {
             method: 'update', 
             newValue: value,
-            id: id
+            id: id,
+            initial: initial,
+            quantity: quantity
         };
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
@@ -58,14 +60,16 @@ class ProductsService {
             .map((response) => response.json());
     }
 
-    _updatePowder(id, value) {
+    _updatePowder(id, value, initial, quantity) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
         let data = {
             method: 'update', 
             newValue: value,
-            id: id
+            id: id,
+            initial: initial,
+            quantity: quantity
         };
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
@@ -78,13 +82,15 @@ class ProductsService {
             .map((response) => response.json());
     }
 
-    _updateBrass(id, value) {
+    _updateBrass(id, value, initial, quantity) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let data = {
             method: 'update', 
             newValue: value,
-            id: id
+            id: id,
+            initial: initial,
+            quantity: quantity
         };
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
@@ -97,14 +103,16 @@ class ProductsService {
             .map((response) => response.json());
     }
 
-    _updatePrimer(id, value) {
+    _updatePrimer(id, value, initial, quantity) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
         let data = {
             method: 'update', 
             newValue: value,
-            id: id
+            id: id,
+            initial: initial,
+            quantity: quantity
         };
         return this._http.post('./api/primers.php',
             JSON.stringify(data),

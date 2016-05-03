@@ -17,6 +17,8 @@ switch ($method) {
     case 'update':
         $primers->id = $json->id;
         $primers->newValue = $json->value;
+        $primers->quantity = $json->quantity;
+        $primers->initial = $json->initial;
         $primers->updatePrimer();
         echo $primers->result;
         break;

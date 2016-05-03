@@ -13,7 +13,7 @@
                        class="form-control input-lg"
                        placeholder="search..."
                        [(ngModel)]="searchTerm"
-                       (change)="search()">
+                       (keyup)="search()">
                 <div class="dataTable_wrapper">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>

@@ -78,7 +78,7 @@ class ProductsComponent implements OnInit, OnChanges {
 
     search() {
         let filter = this.searchTerm.toLowerCase();
-        if (filter === '' && this.brandFilter !== '') {
+        if (filter === '' && this.brandFilter !== '' && typeof this.brandFilter !== 'undefined') {
             this.filter();
         } else {
             let products = this._getProductsByType();

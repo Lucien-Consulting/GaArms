@@ -77,10 +77,11 @@ class ProductsComponent implements OnInit, OnChanges {
     }
 
     search() {
-        let filter = this.searchTerm.toLowerCase();
+        let filter = this.searchTerm;
         if (filter === '' && this.brandFilter !== '' && typeof this.brandFilter !== 'undefined') {
             this.filter();
         } else {
+            filter = filter.toLowerCase()
             let products = this._getProductsByType();
             let visible = products.filter((prod) => {
                 return prod.brandName.toLowerCase().indexOf(filter) > -1 ||

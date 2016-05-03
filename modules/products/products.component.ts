@@ -17,7 +17,7 @@ class ProductsComponent implements OnInit, OnChanges {
     powder:Array<any>;
     visibleProducts:Array<any>;
     searchTerm:string;
-    sortBy:string = 'asc';
+    sortBy:string;
     @Input() currentProductType:string; // bullets, primers, brass, powder
     @Input() brandFilter:string;
 
@@ -105,7 +105,7 @@ class ProductsComponent implements OnInit, OnChanges {
                 return b[category] - a[category];
             }
         });
-        this.sortBy = this.sortBy === 'asc' ? 'dec' : 'asc';
+        this.sortBy = this.sortBy === 'asc' ? 'desc' : 'asc';
     }
 
     _getProductsByType() {

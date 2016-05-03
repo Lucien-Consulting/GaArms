@@ -96,10 +96,11 @@ class ProductsComponent implements OnInit, OnChanges {
         }
     }
 
-    sortProds(category:string) {
+    sortProds(category:string, sortBy:string) {
         this.sortCat = category;
+        sortBy === 'asc' ? 'desc' : 'asc'
         this.visibleProducts.sort((a, b) => {
-            if (this.sortBy = 'asc') {
+            if (sortBy = 'asc') {
                 if (a[category] < b[category]) {
                     return -1;
                 }
@@ -121,7 +122,7 @@ class ProductsComponent implements OnInit, OnChanges {
                 }
             }
         });
-        this.sortBy = this.sortBy === 'asc' ? 'desc' : 'asc';
+        this.sortBy = sortBy;
     }
 
     _getProductsByType() {

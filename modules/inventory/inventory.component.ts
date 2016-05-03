@@ -14,7 +14,7 @@ import { BrandsService } from '../brands/brand.service';
 
 class InventoryComponent implements OnInit {
     loggedIn:boolean = false;
-    active:string = 'bullets';
+    active:string = 'Bullets';
     brandFilter:string;
     brands:Array<any>;
 

@@ -31,11 +31,11 @@ class ProductsComponent implements OnInit, OnChanges {
             });
         this._productsService.getPrimers()
             .subscribe((response) => {
-                this.bullets = response;
+                this.primers = response;
             });
         this._productsService.getBrass()
             .subscribe((response) => {
-                this.bullets = response;
+                this.brass = response;
             });
         this._productsService.getPowder()
             .subscribe((response) => {
@@ -76,10 +76,11 @@ class ProductsComponent implements OnInit, OnChanges {
     }
 
     search() {
-        let filter = this.searchTerm;
-        let visible = this.visibleProducts.filter((bullet) => {
-            return bullet.brandName.indexOf(filter) > -1 ||
-                   bullet.productName.indexOf(filter) > -1 ||
+        let filter = this.searchTerm.toLowerCase();
+        let products = this._getProductsByType();
+        let visible = products.filter((prod) => {
+            return prod.brandName.toLowerCase().indexOf(filter) > -1 ||
+                   prod.productName.toLowerCase().indexOf(filter) > -1 ||
                    filter === '';
         });
         if (visible.length) {

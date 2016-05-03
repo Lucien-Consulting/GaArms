@@ -29,16 +29,16 @@
                         </div>
                         <!-- /input-group -->
                     </li>
-                    <li [attr.class]="active === 'bullets' ? 'active' : ''"
+                    <li [attr.class]="active === 'Bullets' ? 'active' : ''"
                         (click)="setActive('Bullets')">
                         <a href=""><i class="fa fa-crosshairs fa-fw"></i> Bullets</a></li>
-                    <li [attr.class]="active === 'primers' ? 'active' : ''"
+                    <li [attr.class]="active === 'Primers' ? 'active' : ''"
                         (click)="setActive('Primers')">
                         <a href=""><i class="fa fa-dot-circle-o fa-fw"></i> Primers</a></li>
-                    <li [attr.class]="active === 'brass' ? 'active' : ''"
+                    <li [attr.class]="active === 'Brass' ? 'active' : ''"
                         (click)="setActive('Brass')">
                         <a href=""><i class="fa fa-pause fa-fw"></i> Brass</a></li>
-                    <li [attr.class]="active === 'powder' ? 'active' : ''"
+                    <li [attr.class]="active === 'Powder' ? 'active' : ''"
                         (click)="setActive('Powder')">
                         <a href=""><i class="fa fa-bomb fa-fw"></i> Powder</a></li>
                 </ul>
@@ -55,9 +55,3 @@
 <div class="login" *ngIf="!loggedIn">
     <login (checkLoggedInEvent)="checkLoggedIn($event)"></login>
 </div>
-<div class="modal" *ngIf="showModal">
-    <div class="addRemove" *ngIf="">
-        
-    </div>
-</div>
-<div class="mask" *ngIf="showModal"></div>

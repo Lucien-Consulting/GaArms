@@ -30,9 +30,9 @@
                                 <td>{{prod.productName}}</td>
                                 <td>{{prod.quantity}}</td>
                                 <td>
-                                    <a class="btn btn-success col-md-4 col-xs-12" (^click)="addModal(prod)"><i class="fa fa-plus"></i></a>
-                                    <a class="btn btn-danger col-md-4 col-xs-12" (^click)="removeModal(prod)"><i class="fa fa-minus"></i></a>
-                                    <a class="btn btn-info col-md-4 col-xs-12" (^click)="reportModal(prod)"><i class="fa fa-file-text-o"></i></a>
+                                    <a class="btn btn-success col-md-4 col-xs-12" (click)="addModal(prod)"><i class="fa fa-plus"></i></a>
+                                    <a class="btn btn-danger col-md-4 col-xs-12" (click)="removeModal(prod)"><i class="fa fa-minus"></i></a>
+                                    <a class="btn btn-info col-md-4 col-xs-12" (click)="reportModal(prod)"><i class="fa fa-file-text-o"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -42,3 +42,23 @@
         </div>
     </div>
 </div>
+<div class="modal" *ngIf="showModal">
+    <div class="addRemove" *ngIf="">
+        <h1>{{modalType}} Inventory for {{selectedProd.productName}}</h1>
+        <form role="form">
+            <div class="form-group">
+                <label>Quantity to {{modalType}}</label>
+                <input class="form-control" type="number" [(ngModel)]="updateQuantity" required>
+            </div>
+            <div class="form-group">
+                <label>Initial</label>
+                <input class="form-control" [(ngModel)]="initial" required>
+            </div>
+            
+            <button type="submit" class="btn btn-success" (click)="updateProduct()">Submit</button>
+            <button type="reset" class="btn btn-danger" (click)="closeModal">Cancel</button>
+        </form>
+    </div>
+</div>
+<div class="mask" *ngIf="showModal"></div>
+<div class="notification"></div>

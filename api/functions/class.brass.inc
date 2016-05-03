@@ -43,6 +43,6 @@ class Brass {
         $sql->bindParam(1, $newValue);
         $sql->bindParam(2, $id);
         $sql->execute();
-        return 'success';
+        $this->result = 'success';
     }
 }

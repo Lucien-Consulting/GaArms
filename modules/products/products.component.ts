@@ -18,6 +18,10 @@ class ProductsComponent implements OnInit, OnChanges {
     visibleProducts:Array<any>;
     searchTerm:string;
     sortBy:string;
+    updateQuantity:number;
+    initial:string;
+    modalType:string;
+
     @Input() currentProductType:string; // bullets, primers, brass, powder
     @Input() brandFilter:string;
 
@@ -151,6 +155,29 @@ class ProductsComponent implements OnInit, OnChanges {
             return 'asc';
         } else {
             return 'desc';
+        }
+    }
+
+    updateProduct() {
+        if (modalType === 'Add') {
+            this._productsService.updateProduct(
+                this.selectedProduct.id, 
+                parseInt(this.selectedProduct.quantity) + this.updateQuantity,
+                this.currentProductType
+            ).subscribe((response) => {
+                console.log(response);
+            });
+        } 
+        else if (modalType === 'Remove') {
+            this._productsService.updateProduct(
+                this.selectedProduct.id, 
+                parseInt(this.selectedProduct.quantity) - this.updateQuantity,
+                this.currentProductType
+            ).subscribe((response) => {
+                console.log(response);
+            });
+        } else {
+
         }
     }
 }

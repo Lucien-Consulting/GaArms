@@ -16,12 +16,29 @@ class ProductsService {
         
     }
 
+    updateProduct(id, value, type) {
+        switch (type) {
+            case 'Bullets':
+                return this._updateBullet(id, value);
+                break;
+            case 'Primers':
+                return this._updatePrimer(id, value);
+                break;
+            case 'Brass':
+                return this._updateBrass(id, value);
+                break;
+            case 'Powder':
+                return this._updatePowder(id, value);
+                break;
+        }
+    }
+
     getBullets() {
         return this._http.get('./api/bullets.php?method=get')
             .map((response) => response.json());
     }
 
-    updateBullet(value, id) {
+    _updateBullet(id, value) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
@@ -41,7 +58,7 @@ class ProductsService {
             .map((response) => response.json());
     }
 
-    updatePowder(value, id) {
+    _updatePowder(id, value) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
@@ -61,7 +78,7 @@ class ProductsService {
             .map((response) => response.json());
     }
 
-    updateBrass(value, id) {
+    _updateBrass(id, value) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let data = {
@@ -80,7 +97,7 @@ class ProductsService {
             .map((response) => response.json());
     }
 
-    updatePrimer(value, id) {
+    _updatePrimer(id, value) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 

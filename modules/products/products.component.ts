@@ -98,7 +98,7 @@ class ProductsComponent implements OnInit, OnChanges {
 
     sortProds(category:string) {
         this.sortCat = category;
-        let sortBy = _getInverseSortBy(category);
+        let sortBy = this._getInverseSortBy(category);
         this.visibleProducts.sort((a, b) => {
             if (sortBy = 'asc') {
                 if (a[category] < b[category]) {

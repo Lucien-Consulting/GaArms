@@ -21,6 +21,7 @@ class ProductsComponent implements OnInit, OnChanges {
     updateQuantity:number;
     initial:string;
     modalType:string;
+    selectedProduct:any;
 
     @Input() currentProductType:string; // bullets, primers, brass, powder
     @Input() brandFilter:string;
@@ -101,8 +102,9 @@ class ProductsComponent implements OnInit, OnChanges {
         }
     }
 
-    showModal(type) {
+    showModal(prod, type) {
         this.modalType = type;
+        this.selectedProduct = prod;
     }
 
     updateProduct() {
@@ -133,6 +135,7 @@ class ProductsComponent implements OnInit, OnChanges {
         this.modalType = null;
         this.updateQuantity = 0;
         this.initial = '';
+        this.selectedProduct = null;
     }
 
     _getProductsByType() {

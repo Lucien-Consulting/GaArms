@@ -20,13 +20,13 @@
                             <tr>
                                 <th (click)="sortProds('brandName')">Brand 
                                     <i [attr.class]="'fa fa-chevron-' + (sortBy === 'asc' ? 'up' : 'down')" 
-                                        [hidden]="this.sortCat !== 'brandName'"></i></th>
+                                        [hidden]="sortCat !== 'brandName'"></i></th>
                                 <th (click)="sortProds('productName')">Product 
                                     <i [attr.class]="'fa fa-chevron-' + (sortBy === 'asc' ? 'up' : 'down')" 
-                                        [hidden]="this.sortCat !== 'productName'"></i></th>
+                                        [hidden]="sortCat !== 'productName'"></i></th>
                                 <th (click)="sortProds('quantity')">In Stock ({{ currentProductType === 'Powder' ? 'Pounds' : 'Pieces - 1000'}}) 
                                     <i [attr.class]="'fa fa-chevron-' + (sortBy === 'asc' ? 'up' : 'down')" 
-                                        [hidden]="this.sortCat !== 'quantity'"></i></th>
+                                        [hidden]="sortCat !== 'quantity'"></i></th>
                                 <th></th>
                             </tr>
                         </thead>

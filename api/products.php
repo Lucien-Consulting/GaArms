@@ -3,7 +3,11 @@ include('./functions/functions.inc');
 $json = json_decode(file_get_contents('php://input'));
 
 $products = new Products;
-$method = $json->method;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $method = $json->method;
+} else {
+    $method = $_GET['method'];
+}
 
 switch ($method) {  
     case 'get':

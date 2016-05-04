@@ -6,6 +6,14 @@ $products = new Products;
 $method = $json->method;
 
 switch ($method) {  
+    case 'get':
+        $products->getProducts();
+        echo $products->result;
+        break;
+    case 'types':
+        $products->getProductTypes();
+        echo $products->result;
+        break;
     case 'delete':
         $products->id = $json->id;
         $products->deleteProduct();

@@ -19,7 +19,15 @@ class Products {
         $this->setupDb();
         $this->db->prepare("SELECT name, id_product
                             FROM products");
-        $sql->bindParam(1, $this->name);
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $this->result = json_encode($result);
+    }
+
+    public function getProductTypes() {
+        $this->setupDb();
+        $this->db->prepare("SELECT name, id_category
+                            FROM categories");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         $this->result = json_encode($result);

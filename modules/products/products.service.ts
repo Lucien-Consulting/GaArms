@@ -8,6 +8,16 @@ class ProductsService {
     constructor(private _http:Http) {
     }
 
+    getProducts() {
+        return this._http.get('./api/products.php?method=get')
+            .map((response) => response.json()); 
+    }
+
+    getTypes() {
+        return this._http.get('./api/products.php?method=types')
+            .map((response) => response.json()); 
+    }
+
     addProduct(product) {
 
     }

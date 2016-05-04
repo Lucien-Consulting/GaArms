@@ -29,18 +29,26 @@
                         </div>
                         <!-- /input-group -->
                     </li>
-                    <li [attr.class]="active === 'Bullets' ? 'active' : ''"
-                        (click)="setActive('Bullets')">
-                        <a href=""><i class="fa fa-crosshairs fa-fw"></i> Bullets</a></li>
-                    <li [attr.class]="active === 'Primers' ? 'active' : ''"
-                        (click)="setActive('Primers')">
-                        <a href=""><i class="fa fa-dot-circle-o fa-fw"></i> Primers</a></li>
-                    <li [attr.class]="active === 'Brass' ? 'active' : ''"
-                        (click)="setActive('Brass')">
-                        <a href=""><i class="fa fa-pause fa-fw"></i> Brass</a></li>
-                    <li [attr.class]="active === 'Powder' ? 'active' : ''"
-                        (click)="setActive('Powder')">
-                        <a href=""><i class="fa fa-bomb fa-fw"></i> Powder</a></li>
+                    <li (click)="setActive('Bullets')">
+                        <a href="" [attr.class]="active === 'Bullets' ? 'active' : ''">
+                            <i class="fa fa-crosshairs fa-fw"></i> Bullets
+                        </a>
+                    </li>
+                    <li (click)="setActive('Primers')">
+                        <a href="" [attr.class]="active === 'Bullets' ? 'active' : ''">
+                            <i class="fa fa-dot-circle-o fa-fw"></i> Primers
+                        </a>
+                    </li>
+                    <li (click)="setActive('Brass')">
+                        <a href="" [attr.class]="active === 'Bullets' ? 'active' : ''">
+                            <i class="fa fa-pause fa-fw"></i> Brass
+                        </a>
+                    </li>
+                    <li (click)="setActive('Powder')">
+                        <a href="" [attr.class]="active === 'Bullets' ? 'active' : ''">
+                            <i class="fa fa-bomb fa-fw"></i> Powder
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->
@@ -49,7 +57,11 @@
     </nav>
 
     <div id="page-wrapper">
-        <products [brandFilter]="brandFilter" [currentProductType]="active"></products>
+        <products [hidden]="active === 'products' || active === 'brands'"
+                  [brandFilter]="brandFilter"
+                  [currentProductType]="active"></products>
+        <manage-products [hidden]="active !== 'products'" [brands]="brands"></manage-products>
+        <manage-brands [hidden]="active !== 'brands'"></manage-brands>
     </div>
 </div>
 <div class="login" *ngIf="!loggedIn">

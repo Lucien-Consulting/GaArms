@@ -1,4 +1,3 @@
-// this is the overarching builder component
 import { Component, OnInit, Input, OnChanges, SimpleChange } from 'angular2/core';
 import { NgForm } from 'angular2/common';
 import { ProductsService } from './products.service';
@@ -107,35 +106,47 @@ class ProductsComponent implements OnInit, OnChanges {
         this.selectedProduct = prod;
     }
 
+    closeModal() {
+        this.modalType = null;
+        this.updateQuantity = 0;
+        this.initial = '';
+        this.selectedProduct = null;
+    }
+
     updateProduct() {
         if (modalType === 'Add') {
             this._productsService.updateProduct(
-                this.selectedProduct.id, 
+                this.selectedProduct.id_product, 
                 parseInt(this.selectedProduct.quantity) + this.updateQuantity,
                 this.initial,
                 this.updateQuantity,
                 this.currentProductType
             ).subscribe((response) => {
+                this.selectedProduct.quantity = parseInt(this.selectedProduct.quantity) + this.updateQuantity;
+                this.closeModal();
                 console.log(response);
             });
         } 
         else if (modalType === 'Remove') {
             this._productsService.updateProduct(
-                this.selectedProduct.id, 
+                this.selectedProduct.id_product, 
                 parseInt(this.selectedProduct.quantity) - this.updateQuantity,
                 this.initial,
                 -this.updateQuantity,
                 this.currentProductType
             ).subscribe((response) => {
+                this.selectedProduct.quantity = parseInt(this.selectedProduct.quantity) - this.updateQuantity;
+                this.closeModal();
                 console.log(response);
             });
-        } else {
-
         }
-        this.modalType = null;
-        this.updateQuantity = 0;
-        this.initial = '';
-        this.selectedProduct = null;
+    }
+
+    generateReport() {
+        this._productsService.generateReport(this.selectedProduct.id_product)
+            .subscribe((response) => {
+                console.log(response);
+            });
     }
 
     _getProductsByType() {

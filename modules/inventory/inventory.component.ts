@@ -3,7 +3,7 @@ import { Component, OnInit } from 'angular2/core';
 import { NgForm } from 'angular2/common';
 import { LoginComponent } from '../login/login.component';
 import { ProductsComponent } from '../products/products.component';
-import { ManageProductsComponent } from '../products/manage-products.component';
+import { ManageProductsComponent } from '../products/manageProducts.component';
 import { BrandsService } from '../brands/brand.service';
 
 @Component({

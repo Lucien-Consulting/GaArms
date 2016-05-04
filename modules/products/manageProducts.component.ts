@@ -7,7 +7,7 @@ import { ProductsService } from './products.service';
     directives: [],
     providers: [ ProductsService ],
     selector: 'manage-products',
-    templateUrl: '/modules/products/manage-products.tpl.html'
+    templateUrl: '/modules/products/manageProducts.tpl.html'
 })
 
 class ManageProductsComponent implements OnInit, OnChanges {

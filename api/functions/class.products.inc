@@ -17,8 +17,13 @@ class Products {
 
     public function getProducts() {
         $this->setupDb();
-        $sql = $this->db->prepare("SELECT name, id_product
-                            FROM products");
+        $sql = $this->db->prepare(" SELECT  products.id_product,
+                                            products.quantity,
+                                            products.name as productName, 
+                                            brands.name as brandName
+                                    FROM products JOIN brands
+                                    ON products.id_brand = brands.id_brand
+                                    ORDER BY productName ASC");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         $this->result = json_encode($result);

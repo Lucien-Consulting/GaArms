@@ -7,7 +7,7 @@ import { ManageProductsComponent } from '../products/manageProducts.component';
 import { BrandsService } from '../brands/brand.service';
 
 @Component({
-    directives: [ LoginComponent, ProductsComponent ],
+    directives: [ LoginComponent, ProductsComponent, ManageProductsComponent ],
     providers: [ BrandsService ],
     selector: 'inventory',
     templateUrl: '/modules/inventory/inventory.tpl.html'

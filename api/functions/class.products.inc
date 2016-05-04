@@ -17,7 +17,7 @@ class Products {
 
     public function getProducts() {
         $this->setupDb();
-        $this->db->prepare("SELECT name, id_product
+        $sql = $this->db->prepare("SELECT name, id_product
                             FROM products");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -26,7 +26,7 @@ class Products {
 
     public function getProductTypes() {
         $this->setupDb();
-        $this->db->prepare("SELECT name, id_category
+        $sql = $this->db->prepare("SELECT name, id_category
                             FROM categories");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -36,7 +36,7 @@ class Products {
     public function addProduct(){
         //set up database
         $this->setupDb();
-        $this->db->prepare("SELECT name
+        $sql = $this->db->prepare("SELECT name
                             FROM products
                             WHERE name = ?");
         $sql->bindParam(1, $this->name);

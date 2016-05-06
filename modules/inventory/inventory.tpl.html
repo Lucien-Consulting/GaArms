@@ -20,15 +20,14 @@
         <div class="navbar-default sidebar col-xs-12 col-sm-12 col-md-4" role="navigation">
             <div class="sidebar-nav">
                 <ul class="nav" id="side-menu">
-                    <li class="sidebar-search">
+                   <!--  <li class="sidebar-search">
                         <div class="input-group custom-search-form">
                             <select [(ngModel)]="brandFilter">
                                 <option [value]=""></option>
                                 <option *ngFor="let brand of brands" [value]="brand.name">{{brand.name}}</option>
                             </select>
                         </div>
-                        <!-- /input-group -->
-                    </li>
+                    </li> -->
                     <li (click)="setActive('Bullets')">
                         <a href="" [attr.class]="active === 'Bullets' ? 'active' : ''">
                             <i class="fa fa-crosshairs fa-fw"></i> Bullets

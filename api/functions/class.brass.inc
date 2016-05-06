@@ -59,6 +59,7 @@ class Brass {
         $log->bindParam(3, $added);
         $log->bindParam(4, $removed);
         $log->bindParam(5, NOW());
+        $log->execute();
         $this->result = 'success';
     }
 }

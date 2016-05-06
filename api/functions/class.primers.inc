@@ -36,8 +36,8 @@ class Primers {
     public function updatePrimer(){
         $this->setupDb();
         
-        $sql = $this->db->prepare(" UPDATE products ('quantity')
-                                    VALUES (?)
+        $sql = $this->db->prepare(" UPDATE products
+                                    SET quantity = ?
                                     WHERE id_product = ? ");
         $sql->bindParam(1, $newValue);
         $sql->bindParam(2, $id);

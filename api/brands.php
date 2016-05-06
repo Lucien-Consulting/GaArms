@@ -15,7 +15,7 @@ switch ($method) {
         echo $brands->result;
         break;   
     case 'delete':
-        $brands->id = $json->id;
+        $brands->id = $_GET['id'];
         $brands->deleteBrand();
         echo $brands->result;
         break;

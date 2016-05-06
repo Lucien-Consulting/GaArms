@@ -19,7 +19,7 @@ switch ($method) {
         echo $products->result;
         break;
     case 'delete':
-        $products->id = $json->id;
+        $products->id = $_GET['id'];
         $products->deleteProduct();
         echo $products->result;
         break;

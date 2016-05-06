@@ -87,7 +87,7 @@ class ManageBrandsComponent implements OnInit {
     }
 
     confirmDelete() {
-        this._productsService.deleteProduct(this.selectedProduct.id_product)
+        this._productsService.deleteBrand(this.selectedBrand.id_brand)
             .subscribe((response) => {
                 if (response === 'success') {
                     this.updateBrands.next(true);

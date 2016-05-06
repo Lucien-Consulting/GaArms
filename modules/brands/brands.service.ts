@@ -12,6 +12,25 @@ class BrandsService {
         return this._http.get('./api/brands.php?method=get')
             .map((response) => response.json());
     }
+
+    addBrand(name) {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        let data = {
+            method: 'create', 
+            name: name
+        };
+        return this._http.post('./api/brands.php',
+            JSON.stringify(data),
+            {headers: headers}
+        ).map((response) => response);
+    }
+
+    deleteBrand(id:string) {
+        return this._http.get('./api/brands.php?method=delete&id=' + id)
+            .map((response) => response);
+    }
 }
 
 export { BrandsService };

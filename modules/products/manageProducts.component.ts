@@ -96,7 +96,7 @@ class ManageProductsComponent implements OnInit, OnChanges {
 
     addProduct() {
         this._productsService.addProduct(this.selectedType, this.selectedBrand, this.prodName)
-            .subscript((response) => {
+            .subscribe((response) => {
                 if (response === 'success') {
                     this.updateProducts.next('Add');
                 }

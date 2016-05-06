@@ -18,12 +18,25 @@ class ProductsService {
             .map((response) => response.json()); 
     }
 
-    addProduct(product) {
+    addProduct(type, brand, name) {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
 
+        let data = {
+            method: 'create', 
+            name: name,
+            brand: brand,
+            type: type
+        };
+        return this._http.post('./api/products.php',
+            JSON.stringify(data),
+            {headers: headers}
+        ).map((response) => response);
     }
 
     deleteProduct(id:string) {
-        
+        return this._http.get('./api/products.php?method=delete&id=' + id)
+            .map((response) => response);
     }
 
     updateProduct(id, value, initial, quantity, type) {

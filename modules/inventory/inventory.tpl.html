@@ -60,8 +60,11 @@
         <products [hidden]="active === 'products' || active === 'brands'"
                   [brandFilter]="brandFilter"
                   [currentProductType]="active"></products>
-        <manage-products [hidden]="active !== 'products'" [brands]="brands"></manage-products>
-        <manage-brands [hidden]="active !== 'brands'"></manage-brands>
+        <manage-products [hidden]="active !== 'products' && active !=='brands'"
+                         [brands]="brands"
+                         (updateProducts)="updateProducts($event)"></manage-products>
+        <manage-brands [hidden]="active !== 'brands'"
+                       (updateBrands)="updateBrands($event)"></manage-brands>
     </div>
 </div>
 <div class="login" *ngIf="!loggedIn">

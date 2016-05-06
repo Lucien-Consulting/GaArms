@@ -17,6 +17,7 @@ class ManageProductsComponent implements OnInit, OnChanges {
     selectedType:string = '';
     selectedBrand:string = '';
     prodName:string = '';
+    error:any = {};
 
     @Input() brandFilter:string;
     @Input() brands:any;
@@ -97,9 +98,11 @@ class ManageProductsComponent implements OnInit, OnChanges {
         this._productsService.addProduct(this.selectedType, this.selectedBrand, this.prodName)
             .subscript((response) => {
                 if (response === 'success') {
-                    this.updateProducts.next(true);
+                    this.updateProducts.next('Add');
                 }
-                console.log(response);
+                else {
+                    this.error.message = response;
+                }
                 this.closeModal();
             });
     }
@@ -108,11 +111,17 @@ class ManageProductsComponent implements OnInit, OnChanges {
         this._productsService.deleteProduct(this.selectedProduct.id_product)
             .subscribe((response) => {
                 if (response === 'success') {
-                    this.updateProducts.next(true);
+                    this.updateProducts.next('Delete');
                 }
-                console.log(response);
+                else {
+                    this.error.message = response;
+                }
                 this.closeModal();
             });
+    }
+
+    dismissError() {
+        this.error = {};
     }
 }
 

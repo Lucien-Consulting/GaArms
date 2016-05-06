@@ -95,4 +95,7 @@
     </div>
 </div>
 <div class="mask" *ngIf="modalType" (click)="closeModal()"></div>
-<div class="notification"></div>
+<div class="notification alert alert-warning alert-dismissable"  *ngIf="error.message">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" (click)="dismissError">×</button>
+    {{error.message}}
+</div>

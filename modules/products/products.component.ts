@@ -21,36 +21,23 @@ class ProductsComponent implements OnInit, OnChanges {
     initial:string;
     modalType:string;
     selectedProduct:any;
+    error:any = {};
 
     @Input() currentProductType:string; // bullets, primers, brass, powder
     @Input() brandFilter:string;
+    @Input() productsChanged:boolean;
 
     constructor(private _productsService:ProductsService) {
     }
 
     ngOnInit() {
-        this._productsService.getBullets()
-            .subscribe((response) => {
-                this.bullets = response;
-                this.visibleProducts = response;
-            });
-        this._productsService.getPrimers()
-            .subscribe((response) => {
-                this.primers = response;
-            });
-        this._productsService.getBrass()
-            .subscribe((response) => {
-                this.brass = response;
-            });
-        this._productsService.getPowder()
-            .subscribe((response) => {
-                this.powder = response;
-            });
+        this._initialize();
     }
 
     ngOnChanges(changes: any) {
         let filter = changes.brandFilter && changes.brandFilter.currentValue;
         let currentProductType = changes.currentProductType && changes.currentProductType.currentValue;
+        let changed = changes.productChanged && changes.productsChanged.currentValue;
         if (typeof filter !== 'undefined') {
             this.brandFilter = filter;
             this.filter();
@@ -63,6 +50,10 @@ class ProductsComponent implements OnInit, OnChanges {
             if (this.searchTerm) {
                 this.search();
             }
+        }
+        if (changed === 'Add' || changed === 'Delete') {
+            this._initialize();
+            this.productsChanged = null;
         }
     }
 
@@ -122,11 +113,7 @@ class ProductsComponent implements OnInit, OnChanges {
                 this.initial,
                 this.updateQuantity,
                 this.currentProductType
-            ).subscribe((response) => {
-                this.selectedProduct.quantity = parseInt(this.selectedProduct.quantity) + this.updateQuantity;
-                this.closeModal();
-                console.log(response);
-            });
+            ).subscribe(this._updateCallback(response));
         } 
         else if (modalType === 'Remove') {
             this._productsService.updateProduct(
@@ -135,11 +122,7 @@ class ProductsComponent implements OnInit, OnChanges {
                 this.initial,
                 -this.updateQuantity,
                 this.currentProductType
-            ).subscribe((response) => {
-                this.selectedProduct.quantity = parseInt(this.selectedProduct.quantity) - this.updateQuantity;
-                this.closeModal();
-                console.log(response);
-            });
+            ).subscribe(this._updateCallback(response));
         }
     }
 
@@ -148,6 +131,41 @@ class ProductsComponent implements OnInit, OnChanges {
             .subscribe((response) => {
                 console.log(response);
             });
+    }
+
+    dismissError() {
+        this.error = {};
+    }
+
+    _initialize() {
+        this._productsService.getBullets()
+            .subscribe((response) => {
+                this.bullets = response;
+                this.visibleProducts = response;
+                this.currentProductType = 'Bullets';
+            });
+        this._productsService.getPrimers()
+            .subscribe((response) => {
+                this.primers = response;
+            });
+        this._productsService.getBrass()
+            .subscribe((response) => {
+                this.brass = response;
+            });
+        this._productsService.getPowder()
+            .subscribe((response) => {
+                this.powder = response;
+            });
+    }
+
+    _updateCallback(response) {
+        if (response === 'success') {
+            this.selectedProduct.quantity = parseInt(this.selectedProduct.quantity) + this.updateQuantity;
+            this.closeModal();   
+        }
+        else {
+            this.error.message = response;
+        }
     }
 
     _getProductsByType() {

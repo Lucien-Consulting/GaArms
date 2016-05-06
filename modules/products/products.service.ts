@@ -62,7 +62,7 @@ class ProductsService {
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response.json());
+        ).map((response) => response);
     }
 
     getPowder() {
@@ -84,7 +84,7 @@ class ProductsService {
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response.json());
+        ).map((response) => response);
     }
 
     getBrass() {
@@ -105,7 +105,7 @@ class ProductsService {
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response.json());
+        ).map((response) => response);
     }
 
     getPrimers() {
@@ -127,7 +127,7 @@ class ProductsService {
         return this._http.post('./api/primers.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response.json());
+        ).map((response) => response);
     }
 }
 

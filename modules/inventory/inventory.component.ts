@@ -4,10 +4,11 @@ import { NgForm } from 'angular2/common';
 import { LoginComponent } from '../login/login.component';
 import { ProductsComponent } from '../products/products.component';
 import { ManageProductsComponent } from '../products/manageProducts.component';
+import { ManageBrandsComponent } from '../brands/brands.component';
 import { BrandsService } from '../brands/brands.service';
 
 @Component({
-    directives: [ LoginComponent, ProductsComponent, ManageProductsComponent ],
+    directives: [ LoginComponent, ProductsComponent, ManageProductsComponent, ManageBrandsComponent ],
     providers: [ BrandsService ],
     selector: 'inventory',
     templateUrl: '/modules/inventory/inventory.tpl.html'
@@ -33,6 +34,14 @@ class InventoryComponent implements OnInit {
 
     checkLoggedIn() {
         this.loggedIn = this._isCookieValid();
+    }
+
+    updateBrands() {
+        this._getBrands();
+    }
+
+    updateProducts() {
+        this.productsChanged = true;
     }
 
     _isCookieValid() {

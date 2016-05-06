@@ -53,12 +53,11 @@ class Powder {
         }
 
         $log = $this->db->prepare(" INSERT INTO logs (id_product, initial, added, removed, date)
-                                    VALUES (?, ?, ?, ?, ?)");
+                                    VALUES (?, ?, ?, ?, NOW())");
         $log->bindParam(1, $this->id);
         $log->bindParam(2, $this->initial);
         $log->bindParam(3, $added);
         $log->bindParam(4, $removed);
-        $log->bindParam(5, NOW());
         $log->execute();
         $this->result = 'success';
     }

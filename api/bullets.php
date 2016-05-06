@@ -16,7 +16,7 @@ switch ($method) {
         break;   
     case 'update':
         $bullets->id = $json->id;
-        $bullets->newValue = $json->value;
+        $bullets->newValue = $json->newValue;
         $bullets->quantity = $json->quantity;
         $bullets->initial = $json->initial;
         $bullets->updateBullet();

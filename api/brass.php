@@ -16,7 +16,7 @@ switch ($method) {
         break;   
     case 'update':
         $brass->id = $json->id;
-        $brass->newValue = $json->value;
+        $brass->newValue = $json->newValue;
         $brass->quantity = $json->quantity;
         $brass->initial = $json->initial;
         $brass->updateBrass();

@@ -54,10 +54,10 @@
 </div>
 <div class="modal panel panel-default" *ngIf="modalType">
     <div class="panel-heading" *ngIf="modalType !== 'Report'">
-        <h1>{{modalType}} Inventory for <small>{{selectedProduct.productName}}</small></h1>
+        <h1><small>{{modalType}} Inventory for</small> {{selectedProduct.productName}}</h1>
     </div>
     <div class="panel-heading" *ngIf="modalType === 'Report'">
-        <h1>Generate report for <small>{{selectedProduct.productName}}</small></h1>
+        <h1><small>Generate report for </small>{{selectedProduct.productName}}</h1>
     </div>
     <div *ngIf="modalType !== 'Report'">
         <div class="panel-body">

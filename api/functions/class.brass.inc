@@ -36,11 +36,11 @@ class Brass {
     public function updateBrass(){
         $this->setupDb();
         
-        $sql = $this->db->prepare(" UPDATE products 
+        $sql = $this->db->prepare(" UPDATE products
                                     SET quantity = ?
                                     WHERE id_product = ? ");
-        $sql->bindParam(1, $newValue);
-        $sql->bindParam(2, $id);
+        $sql->bindParam(1, $this->newValue);
+        $sql->bindParam(2, $this->id);
         $sql->execute();
 
         $added = 0;

@@ -90,7 +90,7 @@ gulp.task('compileCSS', () => {
                 '.'
             ]
         }))
-        .pipe(cssnano())
+        .pipe(cssnano({zindex:false}))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./styles'));
 });

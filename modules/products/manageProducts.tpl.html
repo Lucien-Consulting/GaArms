@@ -70,14 +70,14 @@
             </div>
             
             <button type="submit" class="btn btn-success" (click)="addProduct()">Submit</button>
-            <button type="reset" class="btn btn-danger" (click)="closeModal">Cancel</button>
+            <button type="reset" class="btn btn-danger" (click)="closeModal()">Cancel</button>
         </form>
     </div>
     <div *ngIf="modalType === 'Delete'">
         <h1>Are you sure you want to delete {{selectedProduct.productName}}</h1>
         <button type="submit" class="btn btn-success" (click)="confirmDelete()">Yes, delete</button>
-        <button type="reset" class="btn btn-danger" (click)="closeModal">Cancel</button>
+        <button type="reset" class="btn btn-danger" (click)="closeModal()">Cancel</button>
     </div>
 </div>
-<div class="mask" *ngIf="modalType"></div>
+<div class="mask" *ngIf="modalType" (click)="closeModal()"></div>
 <div class="notification"></div>

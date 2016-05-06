@@ -36,11 +36,11 @@ class Brands {
         if ($this->rows > 0):
             $this->result = 'The brand "' . $this->name . '" already exists.';
         else:
-            $sql = $this->db->prepare(" INSERT INTO brands (name)
+            $brands = $this->db->prepare(" INSERT INTO brands (name)
                                           VALUES (?)";
 
-            $sql->bindParam(1, $this->name);
-            $sql->execute();
+            $brands->bindParam(1, $this->name);
+            $brands->execute();
             $this->result = 'success';  
         endif;
     }

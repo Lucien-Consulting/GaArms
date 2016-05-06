@@ -19,6 +19,7 @@ class ManageProductsComponent implements OnInit, OnChanges {
     prodName:string = '';
 
     @Input() brandFilter:string;
+    @Input() brands:any;
     @Output() updateProducts:EventEmitter<any> = new EventEmitter();
 
     constructor(private _productsService:ProductsService) {

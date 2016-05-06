@@ -4,7 +4,7 @@ import { NgForm } from 'angular2/common';
 import { LoginComponent } from '../login/login.component';
 import { ProductsComponent } from '../products/products.component';
 import { ManageProductsComponent } from '../products/manageProducts.component';
-import { BrandsService } from '../brands/brand.service';
+import { BrandsService } from '../brands/brands.service';
 
 @Component({
     directives: [ LoginComponent, ProductsComponent, ManageProductsComponent ],

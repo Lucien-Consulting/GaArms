@@ -16,7 +16,8 @@ class Brands {
     public function getBrands() {
         $this->setupDb();
         $sql = $this->db->prepare("SELECT name, id_brand
-                                FROM brands");
+                                FROM brands
+                                ORDER BY name ASC");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         $this->result = json_encode($result);
@@ -40,7 +41,7 @@ class Brands {
 
             $sql->bindParam(1, $this->name);
             $sql->execute();
-            $this->result = json_encode($sql->fetch(PDO::FETCH_ASSOC));  
+            $this->result = 'success';  
         endif;
     }
 

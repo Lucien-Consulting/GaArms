@@ -45,7 +45,7 @@
 </div>
 <div class="modal" *ngIf="modalType">
     <div class="addRemove" *ngIf="modalType !== 'Report'">
-        <h1>{{modalType}} Inventory for {{selectedProd.productName}}</h1>
+        <h1>{{modalType}} Inventory for {{selectedProduct.productName}}</h1>
         <form role="form">
             <div class="form-group">
                 <label>Quantity to {{modalType}}</label>
@@ -61,7 +61,7 @@
         </form>
     </div>
     <div *ngIf="modalType === 'Report'">
-        <h1>Generate report for {{selectedProd.productName}}</h1>
+        <h1>Generate report for {{selectedProduct.productName}}</h1>
         <form role="form">
             <div class="form-group">
                 <label>Report Timeframe</label>

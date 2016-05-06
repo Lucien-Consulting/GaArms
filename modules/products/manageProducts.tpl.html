@@ -55,14 +55,14 @@
                 <input class="form-control" type="text" [(ngModel)]="prodName" required>
             </div>
             <div class="form-group">
-                <label>Brand</label>
+                <label>Brand </label>
                 <select [(ngModel)]="selectedBrand">
                     <option [value]=""></option>
                     <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Product Type</label>
+                <label>Product Type </label>
                 <select [(ngModel)]="selectedType">
                     <option [value]=""></option>
                     <option *ngFor="let type of productTypes" [value]="type.id">{{type.name}}</option>
@@ -73,7 +73,7 @@
             <button type="reset" class="btn btn-danger" (click)="closeModal">Cancel</button>
         </form>
     </div>
-    <div *ngIf="modalType !== 'Delete'">
+    <div *ngIf="modalType === 'Delete'">
         <h1>Are you sure you want to delete {{selectedProduct.productName}}</h1>
         <button type="submit" class="btn btn-success" (click)="confirmDelete()">Yes, delete</button>
         <button type="reset" class="btn btn-danger" (click)="closeModal">Cancel</button>

@@ -34,10 +34,10 @@ class Brands {
         $sql->execute();
         $this->rows = $sql->rowCount();
         if ($this->rows > 0):
-            $this->result = 'Brand already added.';
+            $this->result = 'The brand "' . $this->name . '" already exists.';
         else:
-            $sql = $this->db->prepare(" INSERT INTO brands
-                                        SET name = ?");
+            $sql = $this->db->prepare(" INSERT INTO brands (name)
+                                          VALUES (?)";
 
             $sql->bindParam(1, $this->name);
             $sql->execute();

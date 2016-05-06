@@ -48,17 +48,15 @@ class Products {
         $sql->execute();
         $this->rows = $sql->rowCount();
         if ($this->rows > 0) {
-            $this->result = 'fail';
+            $this->result = 'The product "' . $this->name . '"" already exists.';
         } else {
-            $sql = $this->db->prepare(" INSERT INTO products
-                                        SET name = ?
-                                            id_brand = ?
-                                            id_type = ?");
+            $prods = $this->db->prepare(" INSERT INTO products (name, id_brand, id_type)
+                                          VALUES (?, ?, ?)");
 
-            $sql->bindParam(1, $this->name);
-            $sql->bindParam(2, $this->brand);
-            $sql->bindParam(3, $this->type);
-            $sql->execute();
+            $prods->bindParam(1, $this->name);
+            $prods->bindParam(2, $this->brand);
+            $prods->bindParam(3, $this->type);
+            $prods->execute();
             $this->result = 'success';
         }
     }

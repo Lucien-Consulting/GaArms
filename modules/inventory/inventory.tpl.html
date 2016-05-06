@@ -58,7 +58,6 @@
 
     <div id="page-wrapper">
         <products [hidden]="active === 'products' || active === 'brands'"
-                  [brandFilter]="brandFilter"
                   [currentProductType]="active"></products>
         <manage-products [hidden]="active !== 'products'"
                          [brands]="brands"

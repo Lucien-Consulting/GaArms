@@ -114,6 +114,7 @@ class ProductsComponent implements OnInit, OnChanges {
     }
 
     updateProduct() {
+        let modalType = this.modalType;
         if (modalType === 'Add') {
             this._productsService.updateProduct(
                 this.selectedProduct.id_product, 

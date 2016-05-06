@@ -53,10 +53,13 @@
     </div>
 </div>
 <div class="modal panel panel-default" *ngIf="modalType">
+    <div class="panel-heading" *ngIf="modalType !== 'Report'">
+        <h1>{{modalType}} Inventory for <small>{{selectedProduct.productName}}</small></h1>
+    </div>
+    <div class="panel-heading" *ngIf="modalType === 'Report'">
+        <h1>Generate report for <small>{{selectedProduct.productName}}</small></h1>
+    </div>
     <div *ngIf="modalType !== 'Report'">
-        <div class="panel-heading">
-            <h1>{{modalType}} Inventory for <small>{{selectedProduct.productName}}</small></h1>
-        </div>
         <div class="panel-body">
             <form role="form">
                 <div class="form-group">
@@ -75,9 +78,6 @@
         </div>
     </div>
     <div *ngIf="modalType === 'Report'">
-        <div class="panel-heading">
-            <h1>Generate report for <small>{{selectedProduct.productName}}</small></h1>
-        </div>
         <div class="panel-body">
             <form role="form">
                 <div class="form-group">

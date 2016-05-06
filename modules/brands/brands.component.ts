@@ -113,4 +113,4 @@ class ManageBrandsComponent implements OnInit {
     }
 }
 
-export { ManageBrandssComponent };
+export { ManageBrandsComponent };

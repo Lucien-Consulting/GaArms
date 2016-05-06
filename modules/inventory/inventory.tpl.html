@@ -60,7 +60,7 @@
         <products [hidden]="active === 'products' || active === 'brands'"
                   [brandFilter]="brandFilter"
                   [currentProductType]="active"></products>
-        <manage-products [hidden]="active !== 'products' && active !=='brands'"
+        <manage-products [hidden]="active !== 'products'"
                          [brands]="brands"
                          (updateProducts)="updateProducts($event)"></manage-products>
         <manage-brands [hidden]="active !== 'brands'"

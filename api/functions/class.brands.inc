@@ -37,7 +37,7 @@ class Brands {
             $this->result = 'The brand "' . $this->name . '" already exists.';
         else:
             $brands = $this->db->prepare(" INSERT INTO brands (name)
-                                          VALUES (?)";
+                                          VALUES (?)");
 
             $brands->bindParam(1, $this->name);
             $brands->execute();

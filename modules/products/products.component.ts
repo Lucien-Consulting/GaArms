@@ -142,9 +142,11 @@ class ProductsComponent implements OnInit, OnChanges {
                         logs: response
                     };
                     for (let log of response) {
-                        reportLog.totalAdded += parseInt(log.added);
-                        reportLog.totalRemoved += parseInt(log.removed);
-                        if (log.added) {
+                        let added = parseInt(log.added);
+                        let removed = parseInt(log.removed);
+                        reportLog.totalAdded += added;
+                        reportLog.totalRemoved += removed;
+                        if (added) {
                             reportLog.net += parseInt(log.added);
                         } else {
                             reportLog.net -= parseInt(log.removed);

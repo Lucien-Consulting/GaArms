@@ -39,10 +39,10 @@ class Reports {
         }
 
         $sql = $this->db->prepare(" SELECT logs.date,
-                                               logs.added,
-                                               logs.removed,
-                                               logs.initial
-                                               products.name as productName
+                                           logs.added,
+                                           logs.removed,
+                                           logs.initial,
+                                           products.name as productName
                                         FROM logs JOIN products
                                         ON logs.id_product = products.id_product
                                         WHERE id_product = ? AND date BETWEEN ? and ?

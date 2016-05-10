@@ -37,7 +37,7 @@ class ProductsComponent implements OnInit, OnChanges {
     ngOnChanges(changes: any) {
         let filter = changes.brandFilter && changes.brandFilter.currentValue;
         let currentProductType = changes.currentProductType && changes.currentProductType.currentValue;
-        let changed = changes.productChanged && changes.productsChanged.currentValue;
+        let changed = changes.productsChanged && changes.productsChanged.currentValue;
         if (typeof filter !== 'undefined') {
             this.brandFilter = filter;
             this.filter();

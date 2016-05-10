@@ -183,6 +183,8 @@ class ProductsComponent implements OnInit, OnChanges {
             case 'Powder':
                 products = this.powder;
                 break;
+            default:
+                products = this.bullets;
         }
         return products;
     }

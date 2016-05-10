@@ -133,23 +133,28 @@ class ProductsComponent implements OnInit, OnChanges {
         this.modalType = null;
         this._productsService.generateReport(this.selectedProduct.id_product, this.timeframe)
             .subscribe((response) => {
-                let reportLog = {
-                    productName: response[0].productName,
-                    net: 0,
-                    totalAdded: 0,
-                    totalRemoved: 0,
-                    logs: response
-                };
-                for (let log of response) {
-                    reportLog.totalAdded += parseInt(log.added);
-                    reportLog.totalRemoved += parseInt(log.removed);
-                    if (log.added) {
-                        reportLog.net += parseInt(log.added);
-                    } else {
-                        reportLog.net -= parseInt(log.removed);
+                if (response && response.length > 0) {
+                    let reportLog = {
+                        productName: response[0].productName,
+                        net: 0,
+                        totalAdded: 0,
+                        totalRemoved: 0,
+                        logs: response
+                    };
+                    for (let log of response) {
+                        reportLog.totalAdded += parseInt(log.added);
+                        reportLog.totalRemoved += parseInt(log.removed);
+                        if (log.added) {
+                            reportLog.net += parseInt(log.added);
+                        } else {
+                            reportLog.net -= parseInt(log.removed);
+                        }
                     }
+                    this.reportData = reportLog;
+                } else {
+                    this.error.message = 'There are no logs for ' + this.selectedProduct.productName +
+                                         ' for the selected time frame. (' + this.timeframe + ')';
                 }
-                this.reportData = reportLog;
             });
     }
 

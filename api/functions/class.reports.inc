@@ -38,7 +38,7 @@ class Reports {
             $prev = date ( $format, strtotime ( '-1 year' . $now ) );
         }
 
-        $results = $this->db->prepare(" SELECT logs.date,
+        $sql = $this->db->prepare(" SELECT logs.date,
                                                logs.added,
                                                logs.removed,
                                                logs.initial

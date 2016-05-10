@@ -50,8 +50,8 @@ class Reports {
         $sql->bindParam(1, $this->id);
         $sql->bindParam(2, $prev);
         $sql->bindParam(3, $today);
-        $results->execute();
-        $result = $results->fetchAll(PDO::FETCH_ASSOC);  
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);  
 
         $this->result = json_encode($result);
     }

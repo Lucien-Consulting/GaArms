@@ -45,7 +45,7 @@ class Reports {
                                            products.name as productName
                                         FROM logs JOIN products
                                         ON logs.id_product = products.id_product
-                                        WHERE id_product = ? AND date BETWEEN ? and ?
+                                        WHERE logs.id_product = ? AND date BETWEEN ? and ?
                                         ORDER BY date ASC");
         $sql->bindParam(1, $this->id);
         $sql->bindParam(2, $prev);

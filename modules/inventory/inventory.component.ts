@@ -40,8 +40,8 @@ class InventoryComponent implements OnInit {
         this._getBrands();
     }
 
-    updateProducts() {
-        this.productsChanged = true;
+    updateProducts(val) {
+        this.productsChanged = val;
     }
 
     _isCookieValid() {

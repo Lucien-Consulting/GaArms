@@ -57,7 +57,8 @@
 
     <div id="page-wrapper">
         <products [hidden]="active === 'products' || active === 'brands'"
-                  [currentProductType]="active"></products>
+                  [currentProductType]="active"
+                  [productsChanged]="productsChanged"></products>
         <manage-products [hidden]="active !== 'products'"
                          [brands]="brands"
                          (updateProducts)="updateProducts($event)"></manage-products>

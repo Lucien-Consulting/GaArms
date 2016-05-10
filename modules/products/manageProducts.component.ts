@@ -27,11 +27,7 @@ class ManageProductsComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        this._productsService.getProducts()
-            .subscribe((response) => {
-                this.products = response;
-                this.visibleProducts = response;
-            });
+        this._getProducts();
         this._productsService.getTypes()
             .subscribe((response) => {
                 this.productTypes = response;
@@ -99,6 +95,7 @@ class ManageProductsComponent implements OnInit, OnChanges {
             .subscribe((response) => {
                 if (response === 'success') {
                     this.updateProducts.next('Add');
+                    this._getProducts();
                 }
                 else {
                     this.error.message = response;
@@ -112,6 +109,7 @@ class ManageProductsComponent implements OnInit, OnChanges {
             .subscribe((response) => {
                 if (response === 'success') {
                     this.updateProducts.next('Delete');
+                    this._getProducts();
                 }
                 else {
                     this.error.message = response;
@@ -122,6 +120,14 @@ class ManageProductsComponent implements OnInit, OnChanges {
 
     dismissError() {
         this.error = {};
+    }
+
+    _getProducts() {
+        this._productsService.getProducts()
+            .subscribe((response) => {
+                this.products = response;
+                this.visibleProducts = response;
+            });
     }
 }
 

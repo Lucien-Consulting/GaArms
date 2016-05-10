@@ -63,14 +63,14 @@
                     <label>Brand </label>
                     <select [(ngModel)]="selectedBrand">
                         <option [value]=""></option>
-                        <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
+                        <option *ngFor="let brand of brands" [value]="brand.id_brand">{{brand.name}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Product Type </label>
                     <select [(ngModel)]="selectedType">
                         <option [value]=""></option>
-                        <option *ngFor="let type of productTypes" [value]="type.id">{{type.name}}</option>
+                        <option *ngFor="let type of productTypes" [value]="type.id_product">{{type.name}}</option>
                     </select>
                 </div>
             </form>

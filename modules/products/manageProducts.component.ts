@@ -48,7 +48,7 @@ class ManageProductsComponent implements OnInit, OnChanges {
 
     filter() {
         let filter = this.brandFilter;
-        let products = this._getProductsByType();
+        let products = this.products;
         let visible = products.filter((product) => {
             return product.brandName === filter || filter === '' || filter === 'All';
         });
@@ -66,7 +66,7 @@ class ManageProductsComponent implements OnInit, OnChanges {
             this.filter();
         } else {
             filter = filter ? filter.toLowerCase() : '';
-            let products = this._getProductsByType();
+            let products = this.products;
             let visible = products.filter((prod) => {
                 return prod.brandName.toLowerCase().indexOf(filter) > -1 ||
                        prod.productName.toLowerCase().indexOf(filter) > -1 ||

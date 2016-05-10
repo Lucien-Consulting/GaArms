@@ -104,10 +104,6 @@ class ProductsComponent implements OnInit, OnChanges {
         this.updateQuantity = 0;
         this.initial = '';
         this.selectedProduct = null;
-    }
-
-    closeReport() {
-        this.closeModal();
         this.reportData = null;
     }
 
@@ -134,9 +130,11 @@ class ProductsComponent implements OnInit, OnChanges {
     }
 
     generateReport() {
+        this.modalType = null;
         this._productsService.generateReport(this.selectedProduct.id_product, this.timeframe)
             .subscribe((response) => {
                 let reportLog = {
+                    productName: response[0].productName,
                     net: 0,
                     totalAdded: 0,
                     totalRemoved: 0,

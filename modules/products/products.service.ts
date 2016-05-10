@@ -31,12 +31,12 @@ class ProductsService {
         return this._http.post('./api/products.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response);
+        ).map((response) => response.text());
     }
 
     deleteProduct(id:string) {
         return this._http.get('./api/products.php?method=delete&id=' + id)
-            .map((response) => response);
+            .map((response) => response.text());
     }
 
     updateProduct(id, value, initial, quantity, type) {
@@ -75,7 +75,7 @@ class ProductsService {
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response);
+        ).map((response) => response.test());
     }
 
     getPowder() {
@@ -118,7 +118,7 @@ class ProductsService {
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response);
+        ).map((response) => response.text());
     }
 
     getPrimers() {
@@ -140,7 +140,7 @@ class ProductsService {
         return this._http.post('./api/primers.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response);
+        ).map((response) => response.text());
     }
 }
 

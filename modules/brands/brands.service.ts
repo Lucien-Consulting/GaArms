@@ -24,12 +24,12 @@ class BrandsService {
         return this._http.post('./api/brands.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response);
+        ).map((response) => response.text());
     }
 
     deleteBrand(id:string) {
         return this._http.get('./api/brands.php?method=delete&id=' + id)
-            .map((response) => response);
+            .map((response) => response.text());
     }
 }
 

@@ -70,7 +70,7 @@
                     <label>Product Type </label>
                     <select [(ngModel)]="selectedType">
                         <option [value]=""></option>
-                        <option *ngFor="let type of productTypes" [value]="type.id_product">{{type.name}}</option>
+                        <option *ngFor="let type of productTypes" [value]="type.id_category">{{type.name}}</option>
                     </select>
                 </div>
             </form>

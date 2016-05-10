@@ -23,6 +23,7 @@ class ProductsComponent implements OnInit, OnChanges {
     selectedProduct:any;
     error:any = {};
     reportData:any = null;
+    timeframe:string;
 
     @Input() currentProductType:string; // bullets, primers, brass, powder
     @Input() brandFilter:string;
@@ -133,7 +134,7 @@ class ProductsComponent implements OnInit, OnChanges {
     }
 
     generateReport() {
-        this._productsService.generateReport(this.selectedProduct.id_product)
+        this._productsService.generateReport(this.selectedProduct.id_product, this.timeframe)
             .subscribe((response) => {
                 let reportLog = {
                     net: 0,

@@ -144,7 +144,9 @@ class ProductsService {
     }
 
     generateReport(id, range) {
-        
+        range = range.toLowerCase();
+        return this._http.get('./api/reports.php?id=' + id + '&range=' + range)
+            .map((response) => response.json());
     }
 }
 

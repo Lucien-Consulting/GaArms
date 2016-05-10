@@ -161,7 +161,7 @@ class ProductsComponent implements OnInit, OnChanges {
         let CSV = '';    
         //Set Report title in first row or line
         
-        CSV += ReportTitle + '\r\n\n';
+        CSV += reportTitle + '\r\n\n';
 
         let row = "";
         

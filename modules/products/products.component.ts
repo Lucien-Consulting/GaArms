@@ -156,7 +156,7 @@ class ProductsComponent implements OnInit, OnChanges {
     downloadReport() {
         //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
         let arrData = this.reportData.logs;
-        let reportTitle = this.timeframe + ' Report for: ' + arrData.productName;
+        let reportTitle = this.timeframe + ' Report for: ' + this.reportData.productName;
         
         let CSV = '';    
         //Set Report title in first row or line

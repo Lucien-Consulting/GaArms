@@ -6,4 +6,4 @@ $reports = new Reports;
 $reports->range = $_GET['range'];
 $reports->id = $_GET['id'];
 $reports->generateReport();
-echo $reports->results;
+echo $reports->result;

@@ -74,7 +74,7 @@ class ManageBrandsComponent implements OnInit {
 
     addBrand() {
         this._brandsService.addBrand(this.brandName)
-            .subscript((response) => {
+            .subscribe((response) => {
                 if (response === 'success') {
                     this.updateBrands.next(true);
                     this._getBrands();

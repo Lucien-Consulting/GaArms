@@ -99,7 +99,7 @@
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true" (click)="dismissError()">×</button>
     {{error.message}}
 </div>
-<div class="report panel panel-default" *ngIf="reportData">
+<div class="report modal panel panel-default" *ngIf="reportData">
     <div class="panel-heading">{{reportData.productName}}</div>
     <div class="panel-body">
         <div class="dataTable_wrapper">
@@ -113,7 +113,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let log of reportData; let i=index" class="{{i%2 ? 'odd' : 'even'}}">
+                    <tr *ngFor="let log of reportData.logs; let i=index" class="{{i%2 ? 'odd' : 'even'}}">
                         <td>{{log.initial}}</td>
                         <td>{{log.date}}</td>
                         <td>{{log.added}}</td>
@@ -124,14 +124,15 @@
         </div>
     </div>
     <div class="panel-footer clearfix">
-        <div class="col-md-3">
+        <div class="col-md-2 col-xs-12">
             Added: {{reportData.totalAdded}}
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2 col-xs-12">
             Removed: {{reportData.totalRemoved}}
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2 col-xs-12">
             <strong>Net Added/Removed: {{reportData.net}}</strong>
         </div>
+        <button class="btn btn-warning col-md-2 col-xs-12 pull-right" (click)="closeReport()">Close</button>
     </div>
 </div>

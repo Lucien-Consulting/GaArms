@@ -142,6 +142,10 @@ class ProductsService {
             {headers: headers}
         ).map((response) => response.text());
     }
+
+    generateReport(id, range) {
+        
+    }
 }
 
 export { ProductsService };

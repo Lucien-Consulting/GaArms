@@ -105,6 +105,11 @@ class ProductsComponent implements OnInit, OnChanges {
         this.selectedProduct = null;
     }
 
+    closeReport() {
+        this.closeModal();
+        this.reportData = null;
+    }
+
     updateProduct() {
         let modalType = this.modalType;
         if (modalType === 'Add') {
@@ -130,7 +135,22 @@ class ProductsComponent implements OnInit, OnChanges {
     generateReport() {
         this._productsService.generateReport(this.selectedProduct.id_product)
             .subscribe((response) => {
-
+                let reportLog = {
+                    net: 0,
+                    totalAdded: 0,
+                    totalRemoved: 0,
+                    logs: response
+                };
+                for (let log of response) {
+                    reportLog.totalAdded += log.added;
+                    reportLog.totalRemoved += log.removed;
+                    if (log.added) {
+                        reportLog.net += log.added;
+                    } else {
+                        reportLog.net -= log.removed;
+                    }
+                }
+                this.reportData = reportLog;
             });
     }
 

@@ -17,7 +17,8 @@ class Reports {
     public function generateReport(){
         //set up database
         $this->setupDb();
-        
+        $prev = '';
+        $today = '';
         if($this->range == "week"){
             $format = "Y-m-d";
             $now = date($format);
@@ -37,8 +38,13 @@ class Reports {
             $prev = date ( $format, strtotime ( '-1 year' . $now ) );
         }
 
-        $results = $this->db->prepare(" SELECT *
-                                        FROM logs
+        $results = $this->db->prepare(" SELECT logs.date,
+                                               logs.added,
+                                               logs.removed,
+                                               logs.initial
+                                               products.name as productName
+                                        FROM logs JOIN products
+                                        ON logs.id_product = products.id_product
                                         WHERE id_product = ? AND date BETWEEN ? and ?
                                         ORDER BY date ASC");
         $sql->bindParam(1, $this->id);

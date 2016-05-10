@@ -22,6 +22,7 @@ class ProductsComponent implements OnInit, OnChanges {
     modalType:string;
     selectedProduct:any;
     error:any = {};
+    reportData:any = null;
 
     @Input() currentProductType:string; // bullets, primers, brass, powder
     @Input() brandFilter:string;
@@ -129,7 +130,7 @@ class ProductsComponent implements OnInit, OnChanges {
     generateReport() {
         this._productsService.generateReport(this.selectedProduct.id_product)
             .subscribe((response) => {
-                console.log(response);
+
             });
     }
 

@@ -57,13 +57,13 @@
         <h1><small>{{modalType}} Inventory for</small> {{selectedProduct.productName}}</h1>
     </div>
     <div class="panel-heading" *ngIf="modalType === 'Report'">
-        <h1><small>Generate report for </small>{{selectedProduct.productName}}</h1>
+        <h1><small>Generate report for</small> {{selectedProduct.productName}}</h1>
     </div>
     <div *ngIf="modalType !== 'Report'">
         <div class="panel-body">
             <form role="form">
                 <div class="form-group">
-                    <label>Quantity to {{modalType}}</label>
+                    <label>Quantity to {{modalType}} </label>
                     <input class="form-control" type="number" [(ngModel)]="updateQuantity" required>
                 </div>
                 <div class="form-group">
@@ -81,7 +81,7 @@
         <div class="panel-body">
             <form role="form">
                 <div class="form-group">
-                    <label>Report Timeframe</label>
+                    <label>Report Timeframe </label>
                     <select [(ngModel)]="timeframe">
                         <option *ngFor="let time of ['Week', 'Month', 'Year']" [value]="time">{{time}}</option>
                     </select>
@@ -98,4 +98,40 @@
 <div class="notification alert alert-warning alert-dismissable"  *ngIf="error.message">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true" (click)="dismissError()">×</button>
     {{error.message}}
+</div>
+<div class="report panel panel-default" *ngIf="reportData">
+    <div class="panel-heading">{{reportData.productName}}</div>
+    <div class="panel-body">
+        <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Initial</th>
+                        <th>Date</th>
+                        <th>Added</th>
+                        <th>Removed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let log of reportData; let i=index" class="{{i%2 ? 'odd' : 'even'}}">
+                        <td>{{log.initial}}</td>
+                        <td>{{log.date}}</td>
+                        <td>{{log.added}}</td>
+                        <td>{{log.removed}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="col-md-3">
+            Added: {{reportData.totalAdded}}
+        </div>
+        <div class="col-md-3">
+            Removed: {{reportData.totalRemoved}}
+        </div>
+        <div class="col-md-3">
+            <strong>Net Added/Removed: {{reportData.net}}</strong>
+        </div>
+    </div>
 </div>

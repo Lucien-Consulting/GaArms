@@ -116,7 +116,9 @@ class ProductsComponent implements OnInit, OnChanges {
                 this.initial,
                 this.updateQuantity,
                 this.currentProductType
-            ).subscribe(this._updateCallback(response));
+            ).subscribe((response) => {
+                this._updateCallback(response)
+            });
         } 
         else if (modalType === 'Remove') {
             this._productsService.updateProduct(
@@ -125,7 +127,9 @@ class ProductsComponent implements OnInit, OnChanges {
                 this.initial,
                 -this.updateQuantity,
                 this.currentProductType
-            ).subscribe(this._updateCallback(response));
+            ).subscribe((response) => {
+                this._updateCallback(response)
+            });
         }
     }
 

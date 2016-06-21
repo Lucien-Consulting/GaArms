@@ -75,7 +75,7 @@ class ProductsService {
         return this._http.post('./api/bullets.php',
             JSON.stringify(data),
             {headers: headers}
-        ).map((response) => response.json());
+        ).map((response) => response.text());
     }
 
     getPowder() {

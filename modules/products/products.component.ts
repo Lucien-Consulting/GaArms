@@ -117,7 +117,7 @@ class ProductsComponent implements OnInit, OnChanges {
                 this.updateQuantity,
                 this.currentProductType
             ).subscribe((response) => {
-                this._updateCallback(response)
+                this._updateCallback(response, 1)
             });
         } 
         else if (modalType === 'Remove') {
@@ -128,7 +128,7 @@ class ProductsComponent implements OnInit, OnChanges {
                 -this.updateQuantity,
                 this.currentProductType
             ).subscribe((response) => {
-                this._updateCallback(response)
+                this._updateCallback(response, 0)
             });
         }
     }
@@ -254,10 +254,10 @@ class ProductsComponent implements OnInit, OnChanges {
             });
     }
 
-    _updateCallback(response) {
+    _updateCallback(response, add) {
         if (response === 'success') {
-            this.selectedProduct.quantity = parseInt(this.selectedProduct.quantity) + this.updateQuantity;
-            this.closeModal();   
+            this.selectedProduct.quantity = parseInt(this.selectedProduct.quantity) + (add ? this.updateQuantity : -this.updateQuantity);
+            this.closeModal();
         }
         else {
             this.error.message = response;

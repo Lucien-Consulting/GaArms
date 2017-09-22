@@ -50,8 +50,7 @@ class ManageProductsComponent implements OnInit, OnChanges {
         });
         if (visible.length) {
             this.visibleProducts = visible;
-        }
-        else {
+        } else {
             this.visibleProducts = [];
         }
     }

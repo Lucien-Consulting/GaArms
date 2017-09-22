@@ -2,6 +2,7 @@
 
 class Products {
     public $name;
+    public $newName;
     public $id;
     public $type;
     public $brand;
@@ -32,7 +33,7 @@ class Products {
     public function getProductTypes() {
         $this->setupDb();
         $sql = $this->db->prepare("SELECT name, id_category
-                            FROM categories");
+                                   FROM categories");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         $this->result = json_encode($result);
@@ -42,8 +43,8 @@ class Products {
         //set up database
         $this->setupDb();
         $sql = $this->db->prepare("SELECT name
-                            FROM products
-                            WHERE name = ?");
+                                   FROM products
+                                   WHERE name = ?");
         $sql->bindParam(1, $this->name);
         $sql->execute();
         $this->rows = $sql->rowCount();
@@ -59,6 +60,18 @@ class Products {
             $prods->execute();
             $this->result = 'success';
         }
+    }
+
+    public function updateProduct(){
+        //set up database
+        $this->setupDb();
+        $sql = $this->db->prepare("UPDATE products
+                                   SET name = ?
+                                   WHERE id_product = ?");
+        $sql->bindParam(1, $this->newName);
+        $sql->bindParam(2, $this->id);
+        $sql->execute();
+        $this->result = 'success';
     }
 
     public function deleteProduct(){

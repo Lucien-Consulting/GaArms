@@ -87,8 +87,7 @@ class ProductsComponent implements OnInit, OnChanges {
             });
             if (visible.length) {
                 this.visibleProducts = visible;
-            }
-            else {
+            } else {
                 this.visibleProducts = [];
             }
         }
@@ -119,8 +118,14 @@ class ProductsComponent implements OnInit, OnChanges {
             ).subscribe((response) => {
                 this._updateCallback(response, 1)
             });
-        } 
-        else if (modalType === 'Remove') {
+        } else if (modalType === 'Edit') {
+            this._productsService.updateProductName(
+                this.selectedProduct.id_product, 
+                this.selectedProduct.productName
+            ).subscribe((response) => {
+                this._updateCallback(response, undefined, true);
+            });
+        } else if (modalType === 'Remove') {
             this._productsService.updateProduct(
                 this.selectedProduct.id_product, 
                 parseInt(this.selectedProduct.quantity) - this.updateQuantity,
@@ -254,12 +259,18 @@ class ProductsComponent implements OnInit, OnChanges {
             });
     }
 
-    _updateCallback(response, add) {
+    _updateCallback(response, add, edit) {
         if (response === 'success') {
-            this.selectedProduct.quantity = parseInt(this.selectedProduct.quantity) + (add ? this.updateQuantity : -this.updateQuantity);
-            this.closeModal();
-        }
-        else {
+            if (edit) {
+                let prod = this.visibleProducts.find(prod => prod.id === this.selectedProduct.id);
+                prod.productName = this.selectedProduct.productName;
+                this.closeModal();
+            } else {
+                this.selectedProduct.quantity = parseInt(this.selectedProduct.quantity) + 
+                                                    (add ? this.updateQuantity : -this.updateQuantity);
+                this.closeModal();
+            }
+        } else {
             this.error.message = response;
         }
     }

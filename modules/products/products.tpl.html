@@ -30,16 +30,20 @@
                                 <td>{{prod.brandName}}</td>
                                 <td>{{prod.productName}}</td>
                                 <td>{{prod.quantity}}</td>
-                                <td>
-                                    <button class="btn btn-success col-md-4 col-xs-12" 
+                                <td class="text-center">
+                                    <button class="btn btn-default btn-sm" 
+                                            (click)="showModal(prod, 'Edit')">
+                                            <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-success btn-sm" 
                                             (click)="showModal(prod, 'Add')">
                                             <i class="fa fa-plus"></i>
                                     </button>
-                                    <button class="btn btn-danger col-md-4 col-xs-12" 
+                                    <button class="btn btn-danger btn-sm" 
                                             (click)="showModal(prod, 'Remove')">
                                             <i class="fa fa-minus"></i>
                                     </button>
-                                    <button class="btn btn-info col-md-4 col-xs-12" 
+                                    <button class="btn btn-info btn-sm" 
                                             (click)="showModal(prod, 'Report')">
                                             <i class="fa fa-file-text-o"></i>
                                     </button>
@@ -53,13 +57,16 @@
     </div>
 </div>
 <div class="modal panel panel-default" *ngIf="modalType">
-    <div class="panel-heading" *ngIf="modalType !== 'Report'">
+    <div class="panel-heading" *ngIf="modalType === 'Add' || modalType === 'Remove'">
         <h1><small>{{modalType}} Inventory for</small> {{selectedProduct.productName}}</h1>
+    </div>
+    <div class="panel-heading" *ngIf="modalType === 'Edit'">
+        <h1><small>{{modalType}} name for</small> {{selectedProduct.productName}}</h1>
     </div>
     <div class="panel-heading" *ngIf="modalType === 'Report'">
         <h1><small>Generate report for</small> {{selectedProduct.productName}}</h1>
     </div>
-    <div *ngIf="modalType !== 'Report'">
+    <div *ngIf="modalType === 'Add' || modalType === 'Remove'">
         <div class="panel-body">
             <form role="form">
                 <div class="form-group">
@@ -69,6 +76,20 @@
                 <div class="form-group">
                     <label>Initial</label>
                     <input class="form-control" [(ngModel)]="initial" required>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success" (click)="updateProduct()">Submit</button>
+            <button type="reset" class="btn btn-danger" (click)="closeModal()">Cancel</button>
+        </div>
+    </div>
+    <div *ngIf="modalType === 'Edit'">
+        <div class="panel-body">
+            <form role="form">
+                <div class="form-group">
+                    <label>Product Name </label>
+                    <input class="form-control" type="text" [(ngModel)]="selectedProduct.productName" required>
                 </div>
             </form>
         </div>
@@ -94,7 +115,7 @@
         </div>
     </div>
 </div>
-<div class="mask" *ngIf="modalType" (click)="closeModal()"></div>
+<div class="mask" *ngIf="modalType || reportData" (click)="closeModal()" style="z-index: 1030"></div>
 <div class="notification alert alert-warning alert-dismissable"  *ngIf="error.message">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true" (click)="dismissError()">×</button>
     {{error.message}}
@@ -134,8 +155,10 @@
             <strong>Net Added/Removed: {{reportData.net}}</strong>
         </div>
         <div class="col-md-3 col-xs-12">
-            <button class="btn btn-success col-md-6 col-xs-12" (click)="downloadReport()">Download</button>
-            <button class="btn btn-danger col-md-6 col-xs-12 pull-right" (click)="closeModal()">Close</button>
+            <button class="btn btn-danger pull-right" (click)="closeModal()">Close</button>
+            <button class="btn btn-success pull-right" (click)="downloadReport()">
+                <i class="fa fa-download"></i> Download
+            </button>
         </div>
     </div>
 </div>

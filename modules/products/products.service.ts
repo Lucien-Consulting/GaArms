@@ -56,6 +56,21 @@ class ProductsService {
         }
     }
 
+    updateProductName(id, name) {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        let data = {
+            method: 'patch', 
+            id: id,
+            name: name
+        };
+        return this._http.post('./api/products.php',
+            JSON.stringify(data),
+            {headers: headers}
+        ).map((response) => response.text());
+    }
+
     getBullets() {
         return this._http.get('./api/bullets.php?method=get')
             .map((response) => response.json());

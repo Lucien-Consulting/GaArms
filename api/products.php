@@ -23,6 +23,12 @@ switch ($method) {
         $products->deleteProduct();
         echo $products->result;
         break;
+    case 'patch':
+        $products->id = $json->id;
+        $products->newName = $json->name;
+        $products->updateProduct();
+        echo $products->result;
+        break;
     case 'create':
         $products->name = $json->name;
         $products->brand = $json->brand;
